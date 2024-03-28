@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>集合-Collection</title>
+      <link href="/2024/03/28/%E9%9B%86%E5%90%88-Collection/"/>
+      <url>/2024/03/28/%E9%9B%86%E5%90%88-Collection/</url>
+      
+        <content type="html"><![CDATA[<p> Collection是单列集合的祖宗接口</p><p><img src="/.io//blog\source\pic\collection.png"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Collection </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>异常</title>
       <link href="/2024/03/26/%E5%BC%82%E5%B8%B8/"/>
       <url>/2024/03/26/%E5%BC%82%E5%B8%B8/</url>
