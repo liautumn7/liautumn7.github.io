@@ -151,6 +151,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/14/%E7%BC%93%E5%86%B2%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/14/%E7%BC%93%E5%86%B2%E6%B5%81/" class="post-title-link" itemprop="url">缓冲流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-14 21:46:50 / 修改时间：22:26:31" itemprop="dateCreated datePublished" datetime="2024-04-14T21:46:50+08:00">2024-04-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>缓冲流：</strong>对原始流进行包装，以提高原始流读写数据的性能</p>
+<p><img src="/images/huanchong1.png"></p>
+<p><strong>1.字节缓冲流：</strong></p>
+<ul>
+<li>作用：提高字节流读写数据的性能</li>
+<li>原理：字节缓冲输入流自带了8KB缓冲池;字节缓冲输出流也自带了8KB缓冲池</li>
+</ul>
+<p><img src="/images/huanchong2.png"></p>
+<p>左边是原始流，每在硬盘和内存之间传输一次数据就要调用一次系统资源。如果需要将一个16kb的文件从d盘复制到c盘，开辟的字节数组为1k，则总计需要调用32次系统资源。</p>
+<p>右边是字节缓冲流，会将字节输入流包装成字节输入缓冲流，会开辟一个默认8kb的缓冲池，这样只需要两次就可以把文件传输到内存中，同理字节输出缓冲流也会开辟一个默认8kb的缓冲池，两个缓冲池在内存中通过字节数组来传数据，在内存中传输速度是极快的，所以总计只需要调用4次系统资源。</p>
+<p><img src="/images/huanchong3.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BufferedInputStreamTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;io-app2/src/bis01.txt&quot;</span>);</span><br><span class="line">                <span class="comment">// 1、定义一个字节缓冲输入流包装原始的字节输入流</span></span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(is);<span class="comment">//默认8kb</span></span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(is, <span class="number">8192</span> * <span class="number">2</span>);<span class="comment">//16kb</span></span><br><span class="line"></span><br><span class="line">                <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;io-app2/src/bis01_bak.txt&quot;</span>);</span><br><span class="line">                <span class="comment">// 2、定义一个字节缓冲输出流包装原始的字节输出流</span></span><br><span class="line">                <span class="type">OutputStream</span> <span class="variable">bos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedOutputStream</span>(os);<span class="comment">//默认8kb</span></span><br><span class="line">        )&#123;</span><br><span class="line"></span><br><span class="line">            <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="type">int</span> len;</span><br><span class="line">            <span class="keyword">while</span> ((len = bis.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                bos.write(buffer, <span class="number">0</span>, len);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;复制完成！！&quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>1.字符缓冲流：</strong></p>
+<ul>
+<li>作用：自带8K（8192)的字符缓冲池，可以提高字符输入流读取字符数据的性能。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/14/%E5%AD%97%E7%AC%A6%E6%B5%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -902,70 +981,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/02/%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/02/%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97/" class="post-title-link" itemprop="url">集合嵌套</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-04-02 18:26:15 / 修改时间：22:59:47" itemprop="dateCreated datePublished" datetime="2024-04-02T18:26:15+08:00">2024-04-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> <strong>集合嵌套：</strong></p>
-<ul>
-<li>集合中的元素又是一个集合</li>
-</ul>
-<p>例如下面的代码中，Map集合的键key是省份名，值value是城市名，而一个省份有很多城市，所以城市名可以储存在ArrayList集合中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、定义一个Map集合存储全部的省份信息，和其对应的城市信息。</span></span><br><span class="line">Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; cities1 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">Collections.addAll(cities1, <span class="string">&quot;南京市&quot;</span>,<span class="string">&quot;扬州市&quot;</span>,<span class="string">&quot;苏州市&quot;</span> ,<span class="string">&quot;无锡市&quot;</span>,<span class="string">&quot;常州市&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;江苏省&quot;</span>, cities1);</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; cities2 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">Collections.addAll(cities2, <span class="string">&quot;武汉市&quot;</span>,<span class="string">&quot;孝感市&quot;</span>,<span class="string">&quot;十堰市&quot;</span>,<span class="string">&quot;宜昌市&quot;</span>,<span class="string">&quot;鄂州市&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;湖北省&quot;</span>, cities2);</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; cities3 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">Collections.addAll(cities3, <span class="string">&quot;石家庄市&quot;</span>,<span class="string">&quot;唐山市&quot;</span>, <span class="string">&quot;邢台市&quot;</span>, <span class="string">&quot;保定市&quot;</span>, <span class="string">&quot;张家口市&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;河北省&quot;</span>, cities3);</span><br><span class="line">System.out.println(map);</span><br><span class="line"><span class="comment">//&#123;江苏省=[南京市, 扬州市, 苏州市, 无锡市, 常州市], 湖北省=[武汉市, 孝感市, 十堰市, 宜昌市, 鄂州市], 河北省=[石家庄市, 唐山市, 邢台市, 保定市, 张家口市]&#125;</span></span><br><span class="line"></span><br><span class="line">List&lt;String&gt; cities = map.get(<span class="string">&quot;湖北省&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (String city : cities) &#123;</span><br><span class="line">    System.out.println(city);<span class="comment">//取出键为“湖北省”的值（该值是个也集合，包括了一些湖北省的城市）</span></span><br><span class="line">	<span class="comment">//武汉市</span></span><br><span class="line">	<span class="comment">//孝感市</span></span><br><span class="line">	<span class="comment">//十堰市</span></span><br><span class="line">	<span class="comment">//宜昌市</span></span><br><span class="line">	<span class="comment">//鄂州市</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map.forEach((p, c) -&gt; &#123;</span><br><span class="line">    System.out.println(p + <span class="string">&quot;-----&gt;&quot;</span> + c);<span class="comment">//遍历map集合</span></span><br><span class="line">	<span class="comment">//江苏省-----&gt;[南京市, 扬州市, 苏州市, 无锡市, 常州市]</span></span><br><span class="line">	<span class="comment">//湖北省-----&gt;[武汉市, 孝感市, 十堰市, 宜昌市, 鄂州市]</span></span><br><span class="line">	<span class="comment">//河北省-----&gt;[石家庄市, 唐山市, 邢台市, 保定市, 张家口市]</span></span><br><span class="line">         <span class="comment">//p         //c</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1035,7 +1050,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

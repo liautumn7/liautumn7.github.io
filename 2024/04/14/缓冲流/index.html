@@ -20,19 +20,24 @@
     var CONFIG = {"hostname":"liautumn7.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="标题一标题二标题三标题四标题五这是加粗 这是斜体 这是删除线  无序列表 无序列表   有序列表 有序列表  内嵌代码  引用">
+  <meta name="description" content="缓冲流：对原始流进行包装，以提高原始流读写数据的性能  1.字节缓冲流：  作用：提高字节流读写数据的性能 原理：字节缓冲输入流自带了8KB缓冲池;字节缓冲输出流也自带了8KB缓冲池   左边是原始流，每在硬盘和内存之间传输一次数据就要调用一次系统资源。如果需要将一个16kb的文件从d盘复制到c盘，开辟的字节数组为1k，则总计需要调用32次系统资源。 右边是字节缓冲流，会将字节输入流包装成字节输入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2024.3.8 The first page.">
-<meta property="og:url" content="https://liautumn7.github.io/2024/03/08/2024-3-8-The-first-page/index.html">
+<meta property="og:title" content="缓冲流">
+<meta property="og:url" content="https://liautumn7.github.io/2024/04/14/%E7%BC%93%E5%86%B2%E6%B5%81/index.html">
 <meta property="og:site_name" content="qdy">
-<meta property="og:description" content="标题一标题二标题三标题四标题五这是加粗 这是斜体 这是删除线  无序列表 无序列表   有序列表 有序列表  内嵌代码  引用">
+<meta property="og:description" content="缓冲流：对原始流进行包装，以提高原始流读写数据的性能  1.字节缓冲流：  作用：提高字节流读写数据的性能 原理：字节缓冲输入流自带了8KB缓冲池;字节缓冲输出流也自带了8KB缓冲池   左边是原始流，每在硬盘和内存之间传输一次数据就要调用一次系统资源。如果需要将一个16kb的文件从d盘复制到c盘，开辟的字节数组为1k，则总计需要调用32次系统资源。 右边是字节缓冲流，会将字节输入流包装成字节输入">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-08T14:14:06.000Z">
-<meta property="article:modified_time" content="2024-03-08T14:18:31.582Z">
+<meta property="og:image" content="https://liautumn7.github.io/images/huanchong1.png">
+<meta property="og:image" content="https://liautumn7.github.io/images/huanchong2.png">
+<meta property="og:image" content="https://liautumn7.github.io/images/huanchong3.png">
+<meta property="article:published_time" content="2024-04-14T13:46:50.000Z">
+<meta property="article:modified_time" content="2024-04-14T14:26:31.446Z">
 <meta property="article:author" content="Nianbao Li">
+<meta property="article:tag" content="IO流">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liautumn7.github.io/images/huanchong1.png">
 
-<link rel="canonical" href="https://liautumn7.github.io/2024/03/08/2024-3-8-The-first-page/">
+<link rel="canonical" href="https://liautumn7.github.io/2024/04/14/%E7%BC%93%E5%86%B2%E6%B5%81/">
 
 
 <script id="page-configurations">
@@ -45,7 +50,7 @@
   };
 </script>
 
-  <title>2024.3.8 The first page. | qdy</title>
+  <title>缓冲流 | qdy</title>
   
 
 
@@ -156,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/08/2024-3-8-The-first-page/">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/14/%E7%BC%93%E5%86%B2%E6%B5%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -169,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2024.3.8 The first page.
+          缓冲流
         </h1>
 
         <div class="post-meta">
@@ -180,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-03-08 22:14:06 / 修改时间：22:18:31" itemprop="dateCreated datePublished" datetime="2024-03-08T22:14:06+08:00">2024-03-08</time>
+              <time title="创建时间：2024-04-14 21:46:50 / 修改时间：22:26:31" itemprop="dateCreated datePublished" datetime="2024-04-14T21:46:50+08:00">2024-04-14</time>
             </span>
 
           
@@ -194,21 +199,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="标题一"><a href="#标题一" class="headerlink" title="标题一"></a>标题一</h1><h2 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h2><h3 id="标题三"><a href="#标题三" class="headerlink" title="标题三"></a>标题三</h3><h4 id="标题四"><a href="#标题四" class="headerlink" title="标题四"></a>标题四</h4><h5 id="标题五"><a href="#标题五" class="headerlink" title="标题五"></a>标题五</h5><p><strong>这是加粗</strong></p>
-<p><em>这是斜体</em></p>
-<p><del>这是删除线</del></p>
+        <p><strong>缓冲流：</strong>对原始流进行包装，以提高原始流读写数据的性能</p>
+<p><img src="/images/huanchong1.png"></p>
+<p><strong>1.字节缓冲流：</strong></p>
 <ul>
-<li>无序列表</li>
-<li>无序列表</li>
+<li>作用：提高字节流读写数据的性能</li>
+<li>原理：字节缓冲输入流自带了8KB缓冲池;字节缓冲输出流也自带了8KB缓冲池</li>
 </ul>
-<ol>
-<li>有序列表</li>
-<li>有序列表</li>
-</ol>
-<p><code>内嵌代码</code></p>
-<blockquote>
-<p>引用</p>
-</blockquote>
+<p><img src="/images/huanchong2.png"></p>
+<p>左边是原始流，每在硬盘和内存之间传输一次数据就要调用一次系统资源。如果需要将一个16kb的文件从d盘复制到c盘，开辟的字节数组为1k，则总计需要调用32次系统资源。</p>
+<p>右边是字节缓冲流，会将字节输入流包装成字节输入缓冲流，会开辟一个默认8kb的缓冲池，这样只需要两次就可以把文件传输到内存中，同理字节输出缓冲流也会开辟一个默认8kb的缓冲池，两个缓冲池在内存中通过字节数组来传数据，在内存中传输速度是极快的，所以总计只需要调用4次系统资源。</p>
+<p><img src="/images/huanchong3.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BufferedInputStreamTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;io-app2/src/bis01.txt&quot;</span>);</span><br><span class="line">                <span class="comment">// 1、定义一个字节缓冲输入流包装原始的字节输入流</span></span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(is);<span class="comment">//默认8kb</span></span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(is, <span class="number">8192</span> * <span class="number">2</span>);<span class="comment">//16kb</span></span><br><span class="line"></span><br><span class="line">                <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;io-app2/src/bis01_bak.txt&quot;</span>);</span><br><span class="line">                <span class="comment">// 2、定义一个字节缓冲输出流包装原始的字节输出流</span></span><br><span class="line">                <span class="type">OutputStream</span> <span class="variable">bos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedOutputStream</span>(os);<span class="comment">//默认8kb</span></span><br><span class="line">        )&#123;</span><br><span class="line"></span><br><span class="line">            <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="type">int</span> len;</span><br><span class="line">            <span class="keyword">while</span> ((len = bis.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                bos.write(buffer, <span class="number">0</span>, len);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;复制完成！！&quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>1.字符缓冲流：</strong></p>
+<ul>
+<li>作用：自带8K（8192)的字符缓冲池，可以提高字符输入流读取字符数据的性能。</li>
+</ul>
 
     </div>
 
@@ -217,17 +228,20 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IO%E6%B5%81/" rel="tag"># IO流</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2024/03/09/Java%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="next" title="Java语法基础（双色球）">
-      Java语法基础（双色球） <i class="fa fa-chevron-right"></i>
+    <a href="/2024/04/14/%E5%AD%97%E7%AC%A6%E6%B5%81/" rel="prev" title="字符流">
+      <i class="fa fa-chevron-left"></i> 字符流
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -286,7 +300,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E4%B8%80"><span class="nav-number">1.</span> <span class="nav-text">标题一</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E4%BA%8C"><span class="nav-number">1.1.</span> <span class="nav-text">标题二</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E4%B8%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">标题三</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E5%9B%9B"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">标题四</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E4%BA%94"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">标题五</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

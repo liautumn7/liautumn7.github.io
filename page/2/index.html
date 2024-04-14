@@ -151,6 +151,70 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/02/%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/02/%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97/" class="post-title-link" itemprop="url">集合嵌套</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-02 18:26:15 / 修改时间：22:59:47" itemprop="dateCreated datePublished" datetime="2024-04-02T18:26:15+08:00">2024-04-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> <strong>集合嵌套：</strong></p>
+<ul>
+<li>集合中的元素又是一个集合</li>
+</ul>
+<p>例如下面的代码中，Map集合的键key是省份名，值value是城市名，而一个省份有很多城市，所以城市名可以储存在ArrayList集合中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、定义一个Map集合存储全部的省份信息，和其对应的城市信息。</span></span><br><span class="line">Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; cities1 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">Collections.addAll(cities1, <span class="string">&quot;南京市&quot;</span>,<span class="string">&quot;扬州市&quot;</span>,<span class="string">&quot;苏州市&quot;</span> ,<span class="string">&quot;无锡市&quot;</span>,<span class="string">&quot;常州市&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;江苏省&quot;</span>, cities1);</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; cities2 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">Collections.addAll(cities2, <span class="string">&quot;武汉市&quot;</span>,<span class="string">&quot;孝感市&quot;</span>,<span class="string">&quot;十堰市&quot;</span>,<span class="string">&quot;宜昌市&quot;</span>,<span class="string">&quot;鄂州市&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;湖北省&quot;</span>, cities2);</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; cities3 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">Collections.addAll(cities3, <span class="string">&quot;石家庄市&quot;</span>,<span class="string">&quot;唐山市&quot;</span>, <span class="string">&quot;邢台市&quot;</span>, <span class="string">&quot;保定市&quot;</span>, <span class="string">&quot;张家口市&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;河北省&quot;</span>, cities3);</span><br><span class="line">System.out.println(map);</span><br><span class="line"><span class="comment">//&#123;江苏省=[南京市, 扬州市, 苏州市, 无锡市, 常州市], 湖北省=[武汉市, 孝感市, 十堰市, 宜昌市, 鄂州市], 河北省=[石家庄市, 唐山市, 邢台市, 保定市, 张家口市]&#125;</span></span><br><span class="line"></span><br><span class="line">List&lt;String&gt; cities = map.get(<span class="string">&quot;湖北省&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (String city : cities) &#123;</span><br><span class="line">    System.out.println(city);<span class="comment">//取出键为“湖北省”的值（该值是个也集合，包括了一些湖北省的城市）</span></span><br><span class="line">	<span class="comment">//武汉市</span></span><br><span class="line">	<span class="comment">//孝感市</span></span><br><span class="line">	<span class="comment">//十堰市</span></span><br><span class="line">	<span class="comment">//宜昌市</span></span><br><span class="line">	<span class="comment">//鄂州市</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map.forEach((p, c) -&gt; &#123;</span><br><span class="line">    System.out.println(p + <span class="string">&quot;-----&gt;&quot;</span> + c);<span class="comment">//遍历map集合</span></span><br><span class="line">	<span class="comment">//江苏省-----&gt;[南京市, 扬州市, 苏州市, 无锡市, 常州市]</span></span><br><span class="line">	<span class="comment">//湖北省-----&gt;[武汉市, 孝感市, 十堰市, 宜昌市, 鄂州市]</span></span><br><span class="line">	<span class="comment">//河北省-----&gt;[石家庄市, 唐山市, 邢台市, 保定市, 张家口市]</span></span><br><span class="line">         <span class="comment">//p         //c</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/02/Map%E9%9B%86%E5%90%88%E4%B8%89%E4%B8%AA%E5%B8%B8%E7%94%A8%E5%AE%9E%E7%8E%B0%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1063,67 +1127,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/22/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/22/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="post-title-link" itemprop="url">二分查找</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-03-22 15:26:53 / 修改时间：15:36:36" itemprop="dateCreated datePublished" datetime="2024-03-22T15:26:53+08:00">2024-03-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> <strong>二分查找：</strong></p>
-<p>没什么好说的，查找里最简单的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] numbers = &#123;<span class="number">2</span>, <span class="number">24</span>, <span class="number">34</span>, <span class="number">56</span>, <span class="number">67</span>, <span class="number">78</span>, <span class="number">90</span>, <span class="number">147</span>&#125;;</span><br><span class="line">        System.out.println(binarySearch(numbers,<span class="number">67</span>));<span class="comment">//输出4，67在数组中的索引</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binarySearch</span><span class="params">(<span class="type">int</span>[] numbers, <span class="type">int</span> number)</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> numbers.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(number &lt; numbers[mid])&#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(number &gt; numbers[mid])&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1193,7 +1196,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
