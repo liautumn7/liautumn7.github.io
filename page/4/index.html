@@ -151,6 +151,333 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/11/%E4%B8%89%E4%B8%AAString%E5%8F%AF%E5%8F%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/11/%E4%B8%89%E4%B8%AAString%E5%8F%AF%E5%8F%98%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">三个String可变字符串对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-11 21:48:42" itemprop="dateCreated datePublished" datetime="2024-03-11T21:48:42+08:00">2024-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-29 22:13:03" itemprop="dateModified" datetime="2024-03-29T22:13:03+08:00">2024-03-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> <strong>StringBuilder：</strong></p>
+<ul>
+<li>StringBuilder代表可变字符串对象，相当于是一个容器，它里面装的字符串是可以改变的，就是用来操作字符串的</li>
+<li>好处是 StringBuilder比String更适合做字符串的修改操作，效率会更高，代码也会更简洁</li>
+</ul>
+<p><img src="/images/stringbuilder.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 目标：搞清楚StringBuilder的用法和作用。</span></span><br><span class="line">        <span class="comment">// StringBuilder s = new StringBuilder(); // s &quot;&quot;</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(<span class="string">&quot;itheima&quot;</span>); <span class="comment">// s &quot;itheima&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1、拼接内容</span></span><br><span class="line">        s.append(<span class="number">12</span>);</span><br><span class="line">        s.append(<span class="string">&quot;黑马&quot;</span>);</span><br><span class="line">        s.append(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 支持链式编程</span></span><br><span class="line">        s.append(<span class="number">666</span>).append(<span class="string">&quot;黑马2&quot;</span>).append(<span class="number">666</span>);</span><br><span class="line">        System.out.println(s);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、反转操作</span></span><br><span class="line">        s.reverse();</span><br><span class="line">        System.out.println(s);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3、返回字符串的长度</span></span><br><span class="line">        System.out.println(s.length());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4、把StringBuilder对象又转换成String类型。</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">rs</span> <span class="operator">=</span> s.toString();</span><br><span class="line">        System.out.println(rs);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>拼接的性能好：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 目标：掌握StringBuilder的好处。</span></span><br><span class="line">        <span class="comment">// 需求：要拼接100万次abc</span></span><br><span class="line">        <span class="comment">// 先用String测试看看性能</span></span><br><span class="line"><span class="comment">//        String rs = &quot;&quot;;</span></span><br><span class="line"><span class="comment">//        for (int i = 1; i &lt;= 1000000 ; i++) &#123;</span></span><br><span class="line"><span class="comment">//            rs = rs + &quot;abc&quot;;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        System.out.println(rs);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用StringBuilder演示</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">            sb.append(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sb);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>遍历数组内容，并拼接成指定格式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 目标：完成遍历数组内容，并拼接成指定格式的案例。</span></span><br><span class="line">        System.out.println(getArrayData(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>&#125;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getArrayData</span><span class="params">(<span class="type">int</span>[] arr)</span>&#123;</span><br><span class="line">        <span class="comment">// 1、判断arr是否为null</span></span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、arr数组对象存在。 arr = [11, 22, 33]</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        sb.append(<span class="string">&quot;[&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i == arr.length - <span class="number">1</span>)&#123;</span><br><span class="line">                sb.append(arr[i]);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                sb.append(arr[i]).append(<span class="string">&quot;, &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sb.append(<span class="string">&quot;]&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>StringBuffer</strong>对比StringBuilder有了<strong>线程安全</strong>，它保证了线程安全，也随之带来了额外的性能开销，所以除非有线程安全的需要，不然还是推荐使用它的后继者，也就是 StringBuilder。</p>
+<p><strong>StringJoiner：</strong></p>
+<ul>
+<li>不仅能提高字符串的操作效率，并且在有些场景下使用它操作字符串，代码会更简洁</li>
+</ul>
+<p>例如要将字符串拼接成指定形式时：[java1, java2, java3]</p>
+<p>StringBuilder的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">sb.append(<span class="string">&quot;[&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(i == arr.length - <span class="number">1</span>)&#123;</span><br><span class="line">        sb.append(arr[i]);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        sb.append(arr[i]).append(<span class="string">&quot;, &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">sb.append(<span class="string">&quot;]&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>StringJoiner的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">StringJoiner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringJoiner</span>(<span class="string">&quot;, &quot;</span>, <span class="string">&quot;[&quot;</span>, <span class="string">&quot;]&quot;</span>); <span class="comment">// 间隔符，开始符号，结束符号</span></span><br><span class="line">s.add(<span class="string">&quot;java1&quot;</span>);</span><br><span class="line">s.add(<span class="string">&quot;java2&quot;</span>);</span><br><span class="line">s.add(<span class="string">&quot;java3&quot;</span>);</span><br><span class="line">System.out.println(s); <span class="comment">// [java1, java2, java3]</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/stringjoiner.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.StringJoiner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 目标：掌握StringJoiner的使用。</span></span><br><span class="line">        <span class="comment">// StringJoiner s = new StringJoiner(&quot;, &quot;); // 间隔符！</span></span><br><span class="line">        <span class="type">StringJoiner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringJoiner</span>(<span class="string">&quot;, &quot;</span>, <span class="string">&quot;[&quot;</span>, <span class="string">&quot;]&quot;</span>); <span class="comment">// 间隔符！</span></span><br><span class="line">        s.add(<span class="string">&quot;java1&quot;</span>);</span><br><span class="line">        s.add(<span class="string">&quot;java2&quot;</span>);</span><br><span class="line">        s.add(<span class="string">&quot;java3&quot;</span>);</span><br><span class="line">        System.out.println(s); <span class="comment">// [java1, java2, java3]</span></span><br><span class="line"></span><br><span class="line">        System.out.println(getArrayData(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>&#125;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getArrayData</span><span class="params">(<span class="type">int</span>[] arr)</span>&#123;</span><br><span class="line">        <span class="comment">// 1、判断arr是否为null</span></span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 2、arr数组对象存在。 arr = [11, 22, 33]</span></span><br><span class="line">        <span class="type">StringJoiner</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringJoiner</span>(<span class="string">&quot;, &quot;</span>, <span class="string">&quot;[&quot;</span>, <span class="string">&quot;]&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            s.add(arr[i] + <span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/10/%E6%B3%9B%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/10/%E6%B3%9B%E5%9E%8B/" class="post-title-link" itemprop="url">泛型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-03-10 21:00:05 / 修改时间：23:50:11" itemprop="dateCreated datePublished" datetime="2024-03-10T21:00:05+08:00">2024-03-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> <strong>泛型类：</strong><em>默认Cat是Animal子类</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//泛型类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        MyArrayList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">MyArrayList</span>&lt;&gt;();<span class="comment">//MyArrayList中只能存尖括号里的类型</span></span><br><span class="line">        list.add(<span class="string">&quot;String1&quot;</span>);<span class="comment">//0</span></span><br><span class="line">        list.add(<span class="string">&quot;String2&quot;</span>);<span class="comment">//1</span></span><br><span class="line"></span><br><span class="line">        System.out.println(list.get(<span class="number">1</span>));<span class="comment">//输出String2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyArrayList</span> &lt;E&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> Object[] arr = <span class="keyword">new</span> <span class="title class_">Object</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> size;<span class="comment">//记录当前位置</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">add</span><span class="params">(E e)</span>&#123;</span><br><span class="line">        arr[size++] = e;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> E <span class="title function_">get</span><span class="params">(<span class="type">int</span> index)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (E) arr[index];<span class="comment">//在泛型类内部强转，外部就不用了</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//另</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyArrList</span> &lt;E, T&gt;&#123;</span><br><span class="line">    <span class="comment">//可以存入多个指定类型参数</span></span><br><span class="line">    <span class="comment">//例</span></span><br><span class="line">    MyArrayList&lt;String, <span class="type">int</span>&gt; list = <span class="keyword">new</span> <span class="title class_">MyArrayList</span>&lt;&gt;();</span><br><span class="line">    MyArrayList&lt;Cat, <span class="type">int</span>&gt; list = <span class="keyword">new</span> <span class="title class_">MyArrayList</span>&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    MyArrayList&lt;E <span class="keyword">extends</span> <span class="title class_">Animal</span>&gt; list = <span class="keyword">new</span> <span class="title class_">MyArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//传入的指定类型E必须是Animal类或它的子类</span></span><br><span class="line">    MyArrayList&lt;Animal&gt; list = <span class="keyword">new</span> <span class="title class_">MyArrayList</span>&lt;&gt;();</span><br><span class="line">    MyArrayList&lt;Cat&gt; list = <span class="keyword">new</span> <span class="title class_">MyArrayList</span>&lt;&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>泛型接口：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//需要处理学生和老师的数据，并提供保存和查询两个功能</span></span><br><span class="line">        <span class="comment">//Data data = new StudentData();//会报错</span></span><br><span class="line">        <span class="comment">//data.add(studentdata);</span></span><br><span class="line">        <span class="type">StudentData</span> <span class="variable">studentData</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StudentData</span>();</span><br><span class="line">        studentData.add(studentData);</span><br><span class="line">        studentData.getByName(<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Data</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(T t)</span>;</span><br><span class="line">    ArrayList&lt;T&gt; <span class="title function_">getByName</span><span class="params">(String name)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentData</span> <span class="keyword">implements</span> <span class="title class_">Data</span>&lt;StudentData&gt; &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(StudentData studentData)</span> &#123;<span class="comment">//StedentData类继承时add()方法只能添加Student类</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;StudentData&gt; <span class="title function_">getByName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TeacherData</span> <span class="keyword">implements</span> <span class="title class_">Data</span>&lt;TeacherData&gt; &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(TeacherData teacherData)</span> &#123;<span class="comment">//TeacherData类继承时add()方法只能添加Teacher类</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;TeacherData&gt; <span class="title function_">getByName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//另</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Data</span>&lt;T <span class="keyword">extends</span> <span class="title class_">Animal</span>&gt; &#123;<span class="comment">//如果尖括号里的继承了某个类，那这个泛型接口只能由Animal或者他的子类来实现</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(T t)</span>;</span><br><span class="line">    ArrayList&lt;T&gt; <span class="title function_">getByName</span><span class="params">(String name)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//比如</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentData</span> <span class="keyword">implements</span> <span class="title class_">Data</span>&lt;Cat&gt; &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Cat cat)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> ArrayList&lt;Cat&gt; <span class="title function_">getByName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/09/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/09/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">单例设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-09 14:14:01" itemprop="dateCreated datePublished" datetime="2024-03-09T14:14:01+08:00">2024-03-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-01 23:23:03" itemprop="dateModified" datetime="2024-04-01T23:23:03+08:00">2024-04-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>单例设计模式：</strong></p>
+<ul>
+<li>确保一个类只有一个对象（例如电脑的任务管理器就是一个单例对象，在调用任务管理器时只会有一个，多次调用也只有一个，可以节省内存）</li>
+</ul>
+<p><strong>单例设计模式的实现方法：</strong></p>
+<p><strong>1.饿汉式单例：在拿对象时，对象早就创建好了（使用频繁时）</strong></p>
+<p><strong>写法：</strong></p>
+<ul>
+<li>把类的构造器私有</li>
+<li>定义一个类变量记住类的一个对象</li>
+<li>定义一个类方法，返回对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HungrySingleton</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">HungrySingleton</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">HungrySingleton</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HungrySingleton</span>();</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> HungrySingleton <span class="title function_">getObject</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.懒汉式单例：在拿对象时，才开始创建对象（使用不频繁时）</strong></p>
+<p><strong>写法：</strong></p>
+<ul>
+<li>把类的构造器私有</li>
+<li>定义一个类变量用于存储对象</li>
+<li>定义一个类方法，保证返回的是同一个对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LazySingleton</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> LazySingleton a ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">LazySingleton</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(a == <span class="literal">null</span>)&#123;<span class="comment">//确保只有在第一次调用时才会创建对象，保证每次返回的都是同一个对象</span></span><br><span class="line">            a = <span class="keyword">new</span> <span class="title class_">LazySingleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/09/%E5%88%9D%E8%AF%86%E6%8E%A5%E5%8F%A3interface/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/09/%E5%88%9D%E8%AF%86%E6%8E%A5%E5%8F%A3interface/" class="post-title-link" itemprop="url">初识接口interface</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-09 12:24:26" itemprop="dateCreated datePublished" datetime="2024-03-09T12:24:26+08:00">2024-03-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-10 21:02:51" itemprop="dateModified" datetime="2024-03-10T21:02:51+08:00">2024-03-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> 接口可以多继承（有相同方法时不可以），类不行。类继承的接口implements是干爹，父类extends是亲爹。</p>
+<p>测试类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">StudentManager</span> <span class="variable">studentManager</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StudentManager</span>();</span><br><span class="line">        studentManager.showAllInfo();</span><br><span class="line">        studentManager.showAverageGrades();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>学生类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">char</span> sex;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> score;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">char</span> sex, <span class="type">double</span> score)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.sex = sex;</span><br><span class="line">        <span class="built_in">this</span>.score = score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">char</span> <span class="title function_">getSex</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSex</span><span class="params">(<span class="type">char</span> sex)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getScore</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setScore</span><span class="params">(<span class="type">double</span> score)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.score = score;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>学生操作类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentManager</span> &#123;</span><br><span class="line">    ArrayList&lt;Student&gt; students = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="type">StudentOperator</span> <span class="variable">studentOperator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StudentOperator2</span>();<span class="comment">//多态</span></span><br><span class="line">                                                       <span class="comment">//切换方案时只需要修改这里的1和2</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">StudentManager</span><span class="params">()</span>&#123;</span><br><span class="line">        students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;张三&quot;</span> , <span class="string">&#x27;男&#x27;</span>, <span class="number">80</span>));</span><br><span class="line">        students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;李四&quot;</span> , <span class="string">&#x27;男&#x27;</span>, <span class="number">90</span>));</span><br><span class="line">        students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;马儿扎哈&quot;</span> , <span class="string">&#x27;女&#x27;</span>, <span class="number">85</span>));</span><br><span class="line">        students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;卡莎&quot;</span> , <span class="string">&#x27;男&#x27;</span>, <span class="number">100</span>));</span><br><span class="line">        students.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;迪利纳扎&quot;</span> , <span class="string">&#x27;女&#x27;</span>, <span class="number">95</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">showAllInfo</span><span class="params">()</span>&#123;</span><br><span class="line">        studentOperator.printAllInfo(students);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">showAverageGrades</span><span class="params">()</span>&#123;</span><br><span class="line">        studentOperator.printAverageGrades(students);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StudentOperator</span> &#123;</span><br><span class="line">    <span class="comment">//要继承接口必须重写他的方法</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">printAllInfo</span><span class="params">(ArrayList&lt;Student&gt; students)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">printAverageGrades</span><span class="params">(ArrayList&lt;Student&gt; students)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方案1：输出全班信息和平均分</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentOperator1</span> <span class="keyword">implements</span> <span class="title class_">StudentOperator</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printAllInfo</span><span class="params">(ArrayList&lt;Student&gt; students)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;=====全班信息如下=====&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; students.size(); i++) &#123;</span><br><span class="line">            <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> students.get(i);</span><br><span class="line">            System.out.println(<span class="string">&quot;姓名：&quot;</span> + student.getName() + <span class="string">&quot;性别：&quot;</span> + student.getSex() + <span class="string">&quot;成绩：&quot;</span> +student.getScore());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;====================&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printAverageGrades</span><span class="params">(ArrayList&lt;Student&gt; students)</span> &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">scores</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; students.size(); i++) &#123;</span><br><span class="line">            <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> students.get(i);</span><br><span class="line">            scores += student.getScore();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;全班平均分为:&quot;</span> + (scores / students.size()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方案2：输出全部信息和男女生人数，最高分和最低分以及去掉最高分和最低分后的平均分。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentOperator2</span> <span class="keyword">implements</span> <span class="title class_">StudentOperator</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printAllInfo</span><span class="params">(ArrayList&lt;Student&gt; students)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">boyCount</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">girlCount</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;=====全班信息如下=====&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; students.size(); i++) &#123;</span><br><span class="line">            <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> students.get(i);</span><br><span class="line">            System.out.println(<span class="string">&quot;姓名：&quot;</span> + student.getName() + <span class="string">&quot;性别：&quot;</span> + student.getSex() + <span class="string">&quot;成绩：&quot;</span> +student.getScore());</span><br><span class="line">            <span class="keyword">if</span>(student.getSex() == <span class="string">&#x27;男&#x27;</span>)&#123;</span><br><span class="line">                boyCount++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                girlCount++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;男生人数为：&quot;</span>+ boyCount);</span><br><span class="line">        System.out.println(<span class="string">&quot;女生人数为：&quot;</span>+ girlCount);</span><br><span class="line">        System.out.println(<span class="string">&quot;====================&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printAverageGrades</span><span class="params">(ArrayList&lt;Student&gt; students)</span> &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">scores</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">max</span> <span class="operator">=</span> students.get(<span class="number">0</span>).getScore();</span><br><span class="line">        <span class="type">double</span> <span class="variable">min</span> <span class="operator">=</span> students.get(<span class="number">0</span>).getScore();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; students.size(); i++) &#123;</span><br><span class="line">            <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> students.get(i);</span><br><span class="line">            <span class="keyword">if</span>(max &lt; student.getScore())&#123;</span><br><span class="line">                max = student.getScore();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(min &gt; student.getScore())&#123;</span><br><span class="line">                min = student.getScore();</span><br><span class="line">            &#125;</span><br><span class="line">            scores += student.getScore();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;学生的最高分为：&quot;</span> + max);</span><br><span class="line">        System.out.println(<span class="string">&quot;学生的最低分为：&quot;</span> + min);</span><br><span class="line">        System.out.println(<span class="string">&quot;全班平均分为:&quot;</span> + ((scores - max - min)/ (students.size() - <span class="number">2</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/09/%E5%88%9D%E8%AF%86ARRLIST/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -576,7 +903,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

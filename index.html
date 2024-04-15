@@ -151,6 +151,309 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/15/%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/15/%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81/" class="post-title-link" itemprop="url">序列化流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-15 17:26:48" itemprop="dateCreated datePublished" datetime="2024-04-15T17:26:48+08:00">2024-04-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/15/%E6%95%B0%E6%8D%AE%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/15/%E6%95%B0%E6%8D%AE%E6%B5%81/" class="post-title-link" itemprop="url">数据流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-15 17:26:36 / 修改时间：18:33:07" itemprop="dateCreated datePublished" datetime="2024-04-15T17:26:36+08:00">2024-04-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/images/data1.png"></p>
+<p><strong>DataOutputStream(数据输出流)</strong></p>
+<ul>
+<li>允许把数据和其类型一并写出去</li>
+</ul>
+<p><img src="/images/data2.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataOutputStreamTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="comment">// 1、创建一个数据输出流包装低级的字节输出流</span></span><br><span class="line">                <span class="type">DataOutputStream</span> <span class="variable">dos</span> <span class="operator">=</span></span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">DataOutputStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;io-app2/src/datastream10out.txt&quot;</span>));</span><br><span class="line">                )&#123;</span><br><span class="line">            dos.writeInt(<span class="number">97</span>);</span><br><span class="line">            dos.writeDouble(<span class="number">99.5</span>);</span><br><span class="line">            dos.writeBoolean(<span class="literal">true</span>);</span><br><span class="line">            dos.writeUTF(<span class="string">&quot;数据流666！&quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/data4.png"></p>
+<p>输出的结果是这样的，但是这并不是乱码，因为数据输出流输出的是数据本身和它的数据类型，所以看起来是乱码，但是这并不是为了给人看的，是为了给数据输入流读的。</p>
+<p><strong>DataInputStream(数据输入流)</strong></p>
+<ul>
+<li>用于读取数据输出流写出去的数据</li>
+</ul>
+<p><img src="/images/data3.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataInputStreamTest2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="type">DataInputStream</span> <span class="variable">dis</span> <span class="operator">=</span></span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">DataInputStream</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;io-app2/src/datastream10out.txt&quot;</span>));</span><br><span class="line">                )&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> dis.readInt();</span><br><span class="line">            System.out.println(i);</span><br><span class="line"></span><br><span class="line">            <span class="type">double</span> <span class="variable">d</span> <span class="operator">=</span> dis.readDouble();</span><br><span class="line">            System.out.println(d);</span><br><span class="line"></span><br><span class="line">            <span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> dis.readBoolean();</span><br><span class="line">            System.out.println(b);</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">rs</span> <span class="operator">=</span> dis.readUTF();</span><br><span class="line">            System.out.println(rs);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/data5.png"></p>
+<p>这是数据输入流读取的结果，并没有异常。但是要<strong>注意</strong>，数据输入流的<strong>write</strong>与数据输出流的<strong>read</strong>的顺序<strong>必须一一对应。</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/15/%E6%89%93%E5%8D%B0%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/15/%E6%89%93%E5%8D%B0%E6%B5%81/" class="post-title-link" itemprop="url">打印流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-15 17:26:25 / 修改时间：18:20:17" itemprop="dateCreated datePublished" datetime="2024-04-15T17:26:25+08:00">2024-04-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/images/print1.png"></p>
+<p><strong>PrintStream&#x2F;PrintWriter(打印流)</strong></p>
+<p>**作用:**打印流可以实现更方便、更高效的打印数据出去，能实现打印啥出去就是啥出去。（比如某些打印97可能是字母a，这里打印什么就是什么，true就是true）</p>
+<p>PrintStream提供的构造器和方法：</p>
+<p><img src="/images/print2.png"></p>
+<p>PrintWriter提供的构造器和方法：</p>
+<p><img src="/images/print3.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrintTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="comment">// 1、创建一个打印流管道</span></span><br><span class="line"><span class="comment">//                PrintStream ps =</span></span><br><span class="line"><span class="comment">//                        new PrintStream(&quot;io-app2/src/ps1.txt&quot;, Charset.forName(&quot;GBK&quot;));</span></span><br><span class="line">                <span class="type">PrintStream</span> <span class="variable">ps</span> <span class="operator">=</span></span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="string">&quot;io-app2/src/ps1.txt&quot;</span>);</span><br><span class="line">                <span class="type">PrintWriter</span> <span class="variable">ps</span> <span class="operator">=</span></span><br><span class="line">                        <span class="keyword">new</span> <span class="title class_">PrintWriter</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;io-app2/src/ps1.txt&quot;</span>, <span class="literal">true</span>)); <span class="comment">// 要追加要用原始流</span></span><br><span class="line">                )&#123;</span><br><span class="line">                ps.println(<span class="number">97</span>);</span><br><span class="line">                ps.println(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">                ps.println(<span class="string">&quot;打印流abc&quot;</span>); <span class="comment">// 二者在打印上没什么区别</span></span><br><span class="line">                ps.println(<span class="literal">true</span>);</span><br><span class="line">                ps.println(<span class="number">99.5</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// ps.write(97); // &#x27;a&#x27;  // 二者在写数据上有些区别</span></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>PrintStream(字节)&#x2F;PrintWriter(字符)的区别：</strong></p>
+<ul>
+<li>打印数据的功能上是一模一样的:都是使用方便，性能高效（核心优势)</li>
+<li>PrintStream继承自字节输出流OutputStream，因此支持写字节数据的方法。</li>
+<li>PrintWriter继承自字符输出流Writer，因此支持写字符数据出去。</li>
+</ul>
+<p>打印流的一种应用：输出语句的重定向</p>
+<p><strong>可以把输出语句的打印位置改到某个文件中去</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrintTest2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;老骥伏枥&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;志在千里&quot;</span>); <span class="comment">// 打印在控制台里</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> ( <span class="type">PrintStream</span> <span class="variable">ps</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="string">&quot;io-app2/src/printstream09.txt&quot;</span>); )&#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 把系统默认的打印流对象改成自己设置的打印流</span></span><br><span class="line">            System.setOut(ps);</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">&quot;烈士暮年&quot;</span>); <span class="comment">// 打印在指定txt里</span></span><br><span class="line">            System.out.println(<span class="string">&quot;壮心不已&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/15/%E8%BD%AC%E6%8D%A2%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/15/%E8%BD%AC%E6%8D%A2%E6%B5%81/" class="post-title-link" itemprop="url">转换流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-15 17:26:14 / 修改时间：17:56:47" itemprop="dateCreated datePublished" datetime="2024-04-15T17:26:14+08:00">2024-04-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>问题引出：不同编码读取出现乱码的问题</p>
+<ul>
+<li>如果代码编码和被读取的文本文件的编码是<strong>一致</strong>的，使用<strong>字符流</strong>读取文本文件时<strong>不会出现乱码</strong>!</li>
+<li>如果代码编码和被读取的文本文件的编码是<strong>不一致</strong>的，使用<strong>字符流</strong>读取文本文件时就<strong>会出现乱码</strong>!</li>
+</ul>
+<p>转换流：</p>
+<p><img src="/images/zhl1.png"></p>
+<p><strong>lnputStreamReader(字符输入转换流)</strong></p>
+<ul>
+<li>解决不同编码时，字符流读取文本内容乱码的问题。</li>
+<li>解决思路:先获取文件的原始字节流，再将其按真实的字符集编码转成字符输入流，这样字符输入流中的字符就不乱码了。</li>
+</ul>
+<p><img src="/images/zhl2.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">InputStreamReaderTest2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="comment">// 1、得到文件的原始字节流（GBK的字节流形式）</span></span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;io-app2/src/zhl06.txt&quot;</span>);</span><br><span class="line">                <span class="comment">// 2、把原始的字节输入流按照指定的字符集编码转换成字符输入流</span></span><br><span class="line">                <span class="type">Reader</span> <span class="variable">isr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(is, <span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">                <span class="comment">// 3、把字符输入流包装成缓冲字符输入流</span></span><br><span class="line">                <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(isr);</span><br><span class="line">                )&#123;</span><br><span class="line">            String line;</span><br><span class="line">            <span class="keyword">while</span> ((line = br.readLine()) != <span class="literal">null</span>)&#123;</span><br><span class="line">                System.out.println(line);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>OutputStreamWriter(字符输出转换流)</strong></p>
+<ul>
+<li>作用:可以控制写出去的字符使用什么字符集编码。</li>
+<li>解决思路:获取字节输出流，再按照指定的字符集编码将其转换成字符输出流，以后写出去的字符就会用该字符集编码了。</li>
+</ul>
+<p>问题：要控制写出去的字符使用什么字符集编码，怎么办？</p>
+<p>1.调用String提供的getBytes方法解决：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;学习转换流123abc&quot;</span>;</span><br><span class="line"><span class="type">byte</span>[] bytes = data.getBytes(<span class="string">&quot;GBK&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2.使用“字符输出转换流”来实现：</p>
+<p><img src="/images/zhl3.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OutputStreamWriterTest3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 指定写出去的字符编码。</span></span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="comment">// 1、创建一个文件字节输出流</span></span><br><span class="line">                <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;io-app2/src/zhl07out.txt&quot;</span>);</span><br><span class="line">                <span class="comment">// 2、把原始的字节输出流，按照指定的字符集编码转换成字符输出转换流。</span></span><br><span class="line">                <span class="type">Writer</span> <span class="variable">osw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(os, <span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">                <span class="comment">// 3、把字符输出流包装成缓冲字符输出流</span></span><br><span class="line">                <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(osw);</span><br><span class="line">                )&#123;</span><br><span class="line">            bw.write(<span class="string">&quot;学习转换流abc&quot;</span>);</span><br><span class="line">            bw.write(<span class="string">&quot;学习转换流123&quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/15/%E5%8E%9F%E5%A7%8B%E6%B5%81%E3%80%81%E7%BC%93%E5%86%B2%E6%B5%81%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -176,7 +479,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-04-15 16:31:14 / 修改时间：17:20:16" itemprop="dateCreated datePublished" datetime="2024-04-15T16:31:14+08:00">2024-04-15</time>
+              <time title="创建时间：2024-04-15 16:31:14 / 修改时间：17:25:28" itemprop="dateCreated datePublished" datetime="2024-04-15T16:31:14+08:00">2024-04-15</time>
             </span>
 
           
@@ -196,7 +499,7 @@
 </ul>
 <p><strong>测试步骤：</strong></p>
 <ol>
-<li>使用低级的字节流按照一个一个字节的形式复制文件</li>
+<li>使用低级的字节流按照一个一个字节的形式复制文件。</li>
 <li>使用低级的字节流按照字节数组的形式复制文件。</li>
 <li>使用高级的缓冲字节流按照一个一个字节的形式复制文件。</li>
 <li>使用高级的缓冲字节流按照字节数组的形式复制文件。</li>
@@ -682,325 +985,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/10/%E5%AD%97%E7%AC%A6%E9%9B%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/10/%E5%AD%97%E7%AC%A6%E9%9B%86/" class="post-title-link" itemprop="url">字符集</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-04-10 18:19:32 / 修改时间：18:30:21" itemprop="dateCreated datePublished" datetime="2024-04-10T18:19:32+08:00">2024-04-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> 常见的字符集：ASCII  GBK  UTF-8</p>
-<p><strong>ASCII：</strong></p>
-<ul>
-<li>美国信息交换标准代码，一个字节存储一个字符，首位是0，存储的只有字母、数字和符号</li>
-</ul>
-<p><strong>GBK：</strong></p>
-<ul>
-<li>汉字编码字符集，兼容ASCII，<strong>两个字节</strong>存储一个中文字符，<strong>汉字的第一个字节的第一位必须是1</strong></li>
-</ul>
-<p><img src="/images/zifuji1.png"></p>
-<p><strong>UTF-8:</strong></p>
-<ul>
-<li>万国码Unicode的一种编码方案，采取可变长编码方案，分四个长度区1个字节，2个字节，3个字节，4个字节</li>
-<li>英文字符、数字等只占1个字节（兼容标准ASCII编码），<strong>汉字字符占用3个字节</strong></li>
-</ul>
-<p><img src="/images/zifuji2.png"></p>
-<p><strong>编码和解码：</strong></p>
-<p><img src="/images/zifuji3.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 1、编码</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;a我b&quot;</span>;</span><br><span class="line">        <span class="type">byte</span>[] bytes = data.getBytes(); <span class="comment">// 默认是按照平台字符集（UTF-8）进行编码的。</span></span><br><span class="line">        System.out.println(Arrays.toString(bytes));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 按照指定字符集进行编码。</span></span><br><span class="line">        <span class="type">byte</span>[] bytes1 = data.getBytes(<span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">        System.out.println(Arrays.toString(bytes1));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、解码</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(bytes); <span class="comment">// 按照平台默认编码（UTF-8）解码</span></span><br><span class="line">        System.out.println(s1);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(bytes1, <span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">        System.out.println(s2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/10/%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%92%8C%E9%80%92%E5%BD%92%E6%A1%88%E4%BE%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/10/%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%92%8C%E9%80%92%E5%BD%92%E6%A1%88%E4%BE%8B/" class="post-title-link" itemprop="url">递归案例、文件搜索和非空文件夹删除</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-04-10 17:18:26 / 修改时间：18:14:45" itemprop="dateCreated datePublished" datetime="2024-04-10T17:18:26+08:00">2024-04-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>啤酒问题:啤酒2元一瓶，4个盖子可以换一瓶，2个空瓶可以换一瓶，请问10元可以喝多少瓶?</strong></p>
-<p>可以把剩下的瓶子和瓶盖都换成“钱”，例如瓶盖每满四个就相当于两块钱，这个“钱”和买啤酒剩下的钱并不是一回事，例如十一块钱买了五瓶还剩下一块钱，这一块钱并不能与瓶子瓶盖换的钱相加，因为只是把瓶子瓶盖换算成了钱，并不能真的换成钱。每一轮都会把临时的钱归零，把上一轮的瓶子瓶盖重新换算。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> totalBottles;   <span class="comment">//总瓶数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> lastBottles;   <span class="comment">//上一轮剩下的瓶子数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> lastCovers;   <span class="comment">//上一轮剩下的瓶盖数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        HowManyBottles(<span class="number">10</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;总瓶数&quot;</span> + totalBottles);</span><br><span class="line">        System.out.println(<span class="string">&quot;剩的盖子&quot;</span> + lastCovers);</span><br><span class="line">        System.out.println(<span class="string">&quot;剩的瓶子&quot;</span> + lastBottles);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">HowManyBottles</span><span class="params">(<span class="type">int</span> money)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">buyNumber</span> <span class="operator">=</span> money / <span class="number">2</span>;</span><br><span class="line">        totalBottles += buyNumber;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">covers</span> <span class="operator">=</span> lastCovers + buyNumber;</span><br><span class="line">        <span class="type">int</span> <span class="variable">bottles</span> <span class="operator">=</span> lastBottles + buyNumber;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">totalMoney</span> <span class="operator">=</span> <span class="number">0</span>;<span class="comment">//临时置换的钱</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (covers &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">            totalMoney += (covers / <span class="number">4</span>) * <span class="number">2</span>; <span class="comment">//每四个瓶盖换一瓶，即每四个瓶盖两块钱</span></span><br><span class="line">        &#125;</span><br><span class="line">        lastCovers = covers % <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (bottles &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">            totalMoney += (bottles / <span class="number">2</span>) * <span class="number">2</span>; <span class="comment">//瓶子同理</span></span><br><span class="line">        &#125;</span><br><span class="line">        lastBottles = bottles % <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(totalMoney &gt;= <span class="number">2</span>)&#123; <span class="comment">//只有瓶盖瓶子</span></span><br><span class="line">            HowManyBottles(totalMoney);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>文件搜索：搜索QQ的文件路径并启动</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">      searchFile(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:/&quot;</span>) , <span class="string">&quot;QQ.exe&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 去目录下搜索某个文件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> dir  目录</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> fileName 要搜索的文件名称</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">searchFile</span><span class="params">(File dir, String fileName)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="comment">// 1、把非法的情况都拦截住</span></span><br><span class="line">    <span class="keyword">if</span>(dir == <span class="literal">null</span> || !dir.exists() || dir.isFile())&#123;<span class="comment">//分别是没有权限，不存在，是文件的情况</span></span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 代表无法搜索</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2、dir不是null,存在，一定是目录对象。</span></span><br><span class="line">    <span class="comment">// 获取当前目录下的全部一级文件对象。</span></span><br><span class="line">    File[] files = dir.listFiles();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3、判断当前目录下是否存在一级文件对象，以及是否可以拿到一级文件对象。</span></span><br><span class="line">    <span class="keyword">if</span>(files != <span class="literal">null</span> &amp;&amp; files.length &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">// 4、遍历全部一级文件对象。</span></span><br><span class="line">        <span class="keyword">for</span> (File f : files) &#123;</span><br><span class="line">            <span class="comment">// 5、判断文件是否是文件,还是文件夹</span></span><br><span class="line">            <span class="keyword">if</span>(f.isFile())&#123;</span><br><span class="line">                <span class="comment">// 是文件，判断这个文件名是否是我们要找的</span></span><br><span class="line">                <span class="keyword">if</span>(f.getName().contains(fileName))&#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;找到了：&quot;</span> + f.getAbsolutePath());</span><br><span class="line">                    <span class="type">Runtime</span> <span class="variable">runtime</span> <span class="operator">=</span> Runtime.getRuntime();</span><br><span class="line">                    runtime.exec(f.getAbsolutePath());<span class="comment">//启动程序</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 是文件夹，继续重复这个过程（递归）</span></span><br><span class="line">                searchFile(f, fileName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>删除非空文件夹：delete方法只能删除空文件夹，使用递归来删除非空文件夹。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">File</span> <span class="variable">dir</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;E:/resource/一个非空文件夹&quot;</span>);</span><br><span class="line">        deleteDir(dir);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">deleteDir</span><span class="params">(File dir)</span> &#123;</span><br><span class="line">        <span class="comment">// 1、把非法的情况都拦截住</span></span><br><span class="line">        <span class="keyword">if</span>(dir == <span class="literal">null</span> || !dir.exists())&#123;</span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// 代表无法删除,没有权限或路径错误</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 是文件直接删除</span></span><br><span class="line">        <span class="keyword">if</span>(dir.isFile())&#123;</span><br><span class="line">            dir.delete();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、dir不是null,存在，一定是文件夹对象。</span></span><br><span class="line">        <span class="comment">// 获取当前目录下的全部一级文件对象。</span></span><br><span class="line">        File[] files = dir.listFiles();</span><br><span class="line">        <span class="keyword">if</span>(files == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3、这是一个有内容的文件夹，先删掉里面的内容，再删掉自己。</span></span><br><span class="line">        <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">            <span class="keyword">if</span>(file.isFile())&#123;</span><br><span class="line">                file.delete();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                deleteDir(file);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        dir.delete();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/10/File%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/10/File%E7%B1%BB/" class="post-title-link" itemprop="url">File类</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-04-10 16:53:50 / 修改时间：17:15:47" itemprop="dateCreated datePublished" datetime="2024-04-10T16:53:50+08:00">2024-04-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> <strong>File:</strong></p>
-<ul>
-<li>File是java.io.包下的类，File类的对象，用于代表当前操作系统的文件（可以是<strong>文件、或文件夹</strong>)</li>
-<li>File类只能对<strong>文件本身</strong>进行操作,不能读写文件里面存储的数据</li>
-</ul>
-<p><strong>创建File类的对象：</strong></p>
-<p><img src="/images/file1.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">// 1、创建一个File对象，指代某个具体的文件。</span></span><br><span class="line">    <span class="comment">// 路径分隔符</span></span><br><span class="line">    <span class="comment">// File f1 = new File(&quot;D:/resource/ab.txt&quot;);</span></span><br><span class="line">    <span class="comment">// File f1 = new File(&quot;D:\\resource\\ab.txt&quot;);</span></span><br><span class="line">    <span class="type">File</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:&quot;</span> + File.separator +<span class="string">&quot;resource&quot;</span> + File.separator + <span class="string">&quot;ab.txt&quot;</span>);</span><br><span class="line">    System.out.println(f1.length()); <span class="comment">// 文件大小</span></span><br><span class="line"></span><br><span class="line">    <span class="type">File</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:/resource&quot;</span>);</span><br><span class="line">    System.out.println(f2.length());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意：File对象可以指代一个不存在的文件路径</span></span><br><span class="line">    <span class="type">File</span> <span class="variable">f3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:/resource/aaaa.txt&quot;</span>);</span><br><span class="line">    System.out.println(f3.length());</span><br><span class="line">    System.out.println(f3.exists()); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 我现在要定位的文件是在模块中，应该怎么定位呢？</span></span><br><span class="line">    <span class="comment">// 绝对路径：带盘符的</span></span><br><span class="line">    <span class="comment">// File f4 = new File(&quot;D:\\code\\javasepromax\\file-io-app\\src\\itheima.txt&quot;);</span></span><br><span class="line">    <span class="comment">// 相对路径（重点）：不带盘符，默认是直接去工程下寻找文件的。</span></span><br><span class="line">    <span class="type">File</span> <span class="variable">f4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;file-io-app\\src\\itheima.txt&quot;</span>);</span><br><span class="line">    System.out.println(f4.length());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>绝对路径与相对路径：</strong></p>
-<p><img src="/images/file6.png"></p>
-<h3 id="File类的常用方法："><a href="#File类的常用方法：" class="headerlink" title="File类的常用方法："></a>File类的常用方法：</h3><p><strong>判断文件类型、获取文件信息功能：</strong></p>
-<p><img src="/images/file2.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> UnsupportedEncodingException &#123;</span><br><span class="line">    <span class="comment">// 1.创建文件对象，指代某个文件</span></span><br><span class="line">    <span class="type">File</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:/resource/ab.txt&quot;</span>);</span><br><span class="line">    <span class="comment">//File f1 = new File(&quot;D:/resource/&quot;);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2、public boolean exists()：判断当前文件对象，对应的文件路径是否存在，存在返回true.</span></span><br><span class="line">    System.out.println(f1.exists());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3、public boolean isFile() : 判断当前文件对象指代的是否是文件，是文件返回true，反之。</span></span><br><span class="line">    System.out.println(f1.isFile());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4、public boolean isDirectory()  : 判断当前文件对象指代的是否是文件夹，是文件夹返回true，反之。</span></span><br><span class="line">    System.out.println(f1.isDirectory());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5.public String getName()：获取文件的名称（包含后缀）</span></span><br><span class="line">    System.out.println(f1.getName());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 6.public long length()：获取文件的大小，返回字节个数</span></span><br><span class="line">    System.out.println(f1.length());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 7.public long lastModified()：获取文件的最后修改时间。</span></span><br><span class="line">    <span class="type">long</span> <span class="variable">time</span> <span class="operator">=</span> f1.lastModified();</span><br><span class="line">    <span class="type">SimpleDateFormat</span> <span class="variable">sdf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy/MM/dd HH:mm:ss&quot;</span>);</span><br><span class="line">    System.out.println(sdf.format(time));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 8.public String getPath()：获取创建文件对象时，使用的路径</span></span><br><span class="line">    <span class="type">File</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:\\resource\\ab.txt&quot;</span>);</span><br><span class="line">    <span class="type">File</span> <span class="variable">f3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;file-io-app\\src\\itheima.txt&quot;</span>);</span><br><span class="line">    System.out.println(f2.getPath());</span><br><span class="line">    System.out.println(f3.getPath());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 9.public String getAbsolutePath()：获取绝对路径</span></span><br><span class="line">    System.out.println(f2.getAbsolutePath());</span><br><span class="line">    System.out.println(f3.getAbsolutePath());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>创建文件、删除文件：</strong>delete方法默认只能删除<strong>文件</strong>和<strong>空文件夹</strong>，删除后的文件<strong>不会进入回收站</strong>。</p>
-<p><img src="/images/file3.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="comment">// 1、public boolean createNewFile()：创建一个新文件（文件内容为空），创建成功返回true,反之。</span></span><br><span class="line">    <span class="type">File</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:/resource/itheima2.txt&quot;</span>);</span><br><span class="line">    System.out.println(f1.createNewFile());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2、public boolean mkdir()：用于创建文件夹，注意：只能创建一级文件夹</span></span><br><span class="line">    <span class="type">File</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:/resource/aaa&quot;</span>);</span><br><span class="line">    System.out.println(f2.mkdir());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3、public boolean mkdirs()：用于创建文件夹，注意：可以创建多级文件夹</span></span><br><span class="line">    <span class="type">File</span> <span class="variable">f3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:/resource/bbb/ccc/ddd/eee/fff/ggg&quot;</span>);</span><br><span class="line">    System.out.println(f3.mkdirs());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3、public boolean delete()：删除文件，或者空文件，注意：不能删除非空文件夹。</span></span><br><span class="line">    System.out.println(f1.delete());</span><br><span class="line">    System.out.println(f2.delete());</span><br><span class="line">    <span class="type">File</span> <span class="variable">f4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:/resource&quot;</span>);</span><br><span class="line">    System.out.println(f4.delete());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p><strong>遍历文件夹：</strong></p>
-<p><img src="/images/file4.png"></p>
-<p><strong>使用listFiles的注意事项：</strong></p>
-<p><img src="/images/file4.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">// 1、public String[] list()：获取当前目录下所有的&quot;一级文件名称&quot;到一个字符串数组中去返回。</span></span><br><span class="line">    <span class="type">File</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:\\course\\待研发内容&quot;</span>);</span><br><span class="line">    String[] names = f1.list();</span><br><span class="line">    <span class="keyword">for</span> (String name : names) &#123;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2、public File[] listFiles():（重点）获取当前目录下所有的&quot;一级文件对象&quot;到一个文件对象数组中去返回（重点）</span></span><br><span class="line">    File[] files = f1.listFiles();</span><br><span class="line">    <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">        System.out.println(file.getAbsolutePath());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">File</span> <span class="variable">f</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:/resource/aaa&quot;</span>);</span><br><span class="line">    File[] files1 = f.listFiles();</span><br><span class="line">    System.out.println(Arrays.toString(files1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/05/Stream%E6%B5%812/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/05/Stream%E6%B5%812/" class="post-title-link" itemprop="url">Stream流的获取方法、中间方法和终结方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-04-05 18:03:30" itemprop="dateCreated datePublished" datetime="2024-04-05T18:03:30+08:00">2024-04-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-06 13:54:02" itemprop="dateModified" datetime="2024-04-06T13:54:02+08:00">2024-04-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>获取Stream流：</strong></p>
-<p><img src="/images/stream2.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StreamTest2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 1、如何获取List集合的Stream流？</span></span><br><span class="line">        List&lt;String&gt; names = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Collections.addAll(names, <span class="string">&quot;张三丰&quot;</span>,<span class="string">&quot;张无忌&quot;</span>,<span class="string">&quot;周芷若&quot;</span>,<span class="string">&quot;赵敏&quot;</span>,<span class="string">&quot;张强&quot;</span>);</span><br><span class="line">        Stream&lt;String&gt; stream = names.stream();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、如何获取Set集合的Stream流？</span></span><br><span class="line">        Set&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        Collections.addAll(set, <span class="string">&quot;刘德华&quot;</span>,<span class="string">&quot;张曼玉&quot;</span>,<span class="string">&quot;蜘蛛精&quot;</span>,<span class="string">&quot;马德&quot;</span>,<span class="string">&quot;德玛西亚&quot;</span>);</span><br><span class="line">        Stream&lt;String&gt; stream1 = set.stream();</span><br><span class="line">        stream1.filter(s -&gt; s.contains(<span class="string">&quot;德&quot;</span>)).forEach(s -&gt; System.out.println(s));</span><br><span class="line">                               <span class="comment">//包含          //遍历</span></span><br><span class="line">        <span class="comment">// 3、如何获取Map集合的Stream流？</span></span><br><span class="line">        Map&lt;String, Double&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;古力娜扎&quot;</span>, <span class="number">172.3</span>);</span><br><span class="line">        map.put(<span class="string">&quot;迪丽热巴&quot;</span>, <span class="number">168.3</span>);</span><br><span class="line">        map.put(<span class="string">&quot;马尔扎哈&quot;</span>, <span class="number">166.3</span>);</span><br><span class="line">        map.put(<span class="string">&quot;卡尔扎巴&quot;</span>, <span class="number">168.3</span>);</span><br><span class="line"></span><br><span class="line">        Set&lt;String&gt; keys = map.keySet();</span><br><span class="line">        Stream&lt;String&gt; ks = keys.stream();</span><br><span class="line"></span><br><span class="line">        Collection&lt;Double&gt; values = map.values();</span><br><span class="line">        Stream&lt;Double&gt; vs = values.stream();</span><br><span class="line"></span><br><span class="line">        Set&lt;Map.Entry&lt;String, Double&gt;&gt; entries = map.entrySet();</span><br><span class="line">        Stream&lt;Map.Entry&lt;String, Double&gt;&gt; kvs = entries.stream();</span><br><span class="line">        kvs.filter(e -&gt; e.getKey().contains(<span class="string">&quot;巴&quot;</span>))</span><br><span class="line">                .forEach(e -&gt; System.out.println(e.getKey()+ <span class="string">&quot;--&gt;&quot;</span> + e.getValue()));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4、如何获取数组的Stream流？</span></span><br><span class="line">        String[] names2 = &#123;<span class="string">&quot;张翠山&quot;</span>, <span class="string">&quot;东方不败&quot;</span>, <span class="string">&quot;唐大山&quot;</span>, <span class="string">&quot;独孤求败&quot;</span>&#125;;</span><br><span class="line">        Stream&lt;String&gt; s1 = Arrays.stream(names2);</span><br><span class="line">        Stream&lt;String&gt; s2 = Stream.of(names2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Stream流常见的中间方法：</strong></p>
-<p>Stream流之所以叫流，我的理解就是像流水线一样，可以链式编程。而中间方法返回的正是一个Stream对象，所以可以继续调用方法，完成链式编程。</p>
-<p><img src="/images/stream3.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StreamTest3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Double&gt; scores = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Collections.addAll(scores, <span class="number">88.5</span>, <span class="number">100.0</span>, <span class="number">60.0</span>, <span class="number">99.0</span>, <span class="number">9.5</span>, <span class="number">99.6</span>, <span class="number">25.0</span>);</span><br><span class="line">        <span class="comment">// 需求1：找出成绩大于等于60分的数据，并升序后，再输出。</span></span><br><span class="line">        scores.stream().filter(s -&gt; s &gt;= <span class="number">60</span>).sorted().forEach(s -&gt; System.out.println(s));</span><br><span class="line"></span><br><span class="line">        List&lt;Student&gt; students = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;蜘蛛精&quot;</span>, <span class="number">26</span>, <span class="number">172.5</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;蜘蛛精&quot;</span>, <span class="number">26</span>, <span class="number">172.5</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;紫霞&quot;</span>, <span class="number">23</span>, <span class="number">167.6</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;白晶晶&quot;</span>, <span class="number">25</span>, <span class="number">169.0</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;牛魔王&quot;</span>, <span class="number">35</span>, <span class="number">183.3</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s6</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;牛夫人&quot;</span>, <span class="number">34</span>, <span class="number">168.5</span>);</span><br><span class="line">        Collections.addAll(students, s1, s2, s3, s4, s5, s6);</span><br><span class="line">        <span class="comment">// 需求2：找出年龄大于等于23,且年龄小于等于30岁的学生，并按照年龄降序输出.</span></span><br><span class="line">        students.stream().filter(s -&gt; s.getAge() &gt;= <span class="number">23</span> &amp;&amp; s.getAge() &lt;= <span class="number">30</span>)</span><br><span class="line">                .sorted((o1, o2) -&gt; o2.getAge() - o1.getAge())</span><br><span class="line">                .forEach(s -&gt; System.out.println(s));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求3：取出身高最高的前3名学生，并输出。</span></span><br><span class="line">        students.stream().sorted((o1, o2) -&gt; Double.compare(o2.getHeight(), o1.getHeight()))</span><br><span class="line">                .limit(<span class="number">3</span>).forEach(System.out::println);</span><br><span class="line">        System.out.println(<span class="string">&quot;----------------------------------------------------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求4：取出身高倒数的2名学生，并输出。   s1 s2 s3 s4 s5 s6</span></span><br><span class="line">        students.stream().sorted((o1, o2) -&gt; Double.compare(o2.getHeight(), o1.getHeight()))</span><br><span class="line">                .skip(students.size() - <span class="number">2</span>).forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求5：找出身高超过168的学生叫什么名字，要求去除重复的名字，再输出。</span></span><br><span class="line">        students.stream().filter(s -&gt; s.getHeight() &gt; <span class="number">168</span>).map(Student::getName)</span><br><span class="line">               .distinct().forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// distinct去重复，自定义类型的对象（希望内容一样就认为重复，重写hashCode,equals）</span></span><br><span class="line">        students.stream().filter(s -&gt; s.getHeight() &gt; <span class="number">168</span>)</span><br><span class="line">                .distinct().forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">        Stream&lt;String&gt; st1 = Stream.of(<span class="string">&quot;张三&quot;</span>, <span class="string">&quot;李四&quot;</span>);</span><br><span class="line">        Stream&lt;String&gt; st2 = Stream.of(<span class="string">&quot;张三2&quot;</span>, <span class="string">&quot;李四2&quot;</span>, <span class="string">&quot;王五&quot;</span>);</span><br><span class="line">        Stream&lt;String&gt; allSt = Stream.concat(st1, st2);</span><br><span class="line">        allSt.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Stream流常见的终结方法：</strong></p>
-<p>出现终结方法，流就结束了</p>
-<p><img src="/images/stream4.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StreamTest4</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Student&gt; students = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;蜘蛛精&quot;</span>, <span class="number">26</span>, <span class="number">172.5</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;蜘蛛精&quot;</span>, <span class="number">26</span>, <span class="number">172.5</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;紫霞&quot;</span>, <span class="number">23</span>, <span class="number">167.6</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;白晶晶&quot;</span>, <span class="number">25</span>, <span class="number">169.0</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;牛魔王&quot;</span>, <span class="number">35</span>, <span class="number">183.3</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s6</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;牛夫人&quot;</span>, <span class="number">34</span>, <span class="number">168.5</span>);</span><br><span class="line">        Collections.addAll(students, s1, s2, s3, s4, s5, s6);</span><br><span class="line">        <span class="comment">// 需求1：请计算出身高超过168的学生有几人。</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> students.stream().filter(s -&gt; s.getHeight() &gt; <span class="number">168</span>).count();</span><br><span class="line">                                                                        <span class="comment">//计数</span></span><br><span class="line">        System.out.println(size);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求2：请找出身高最高的学生对象，并输出。</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s</span> <span class="operator">=</span> students.stream().max((o1, o2) -&gt; Double.compare(o1.getHeight(), o2.getHeight())).get();                          <span class="comment">//这种自定义的类型的对象，要重写compare比较规则</span></span><br><span class="line">        System.out.println(s);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求3：请找出身高最矮的学生对象，并输出。</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">ss</span> <span class="operator">=</span> students.stream().min((o1, o2) -&gt; Double.compare(o1.getHeight(), o2.getHeight())).get();</span><br><span class="line">        System.out.println(ss);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>比较<strong>重要</strong>的终结方法：（在开发中，最后需要的往往都是集合数组，所以需要把Stream流对象收集起来，转换成我们需要的类型）</p>
-<p><strong>收集Stream流:<strong>就是把Stream流操作后的结果转</strong>回到集合或者数组中</strong>去返回。</p>
-<p><strong>Stream流:<strong>方便操作集合&#x2F;数组的</strong>手段</strong></p>
-<p><strong>集合&#x2F;数组:<strong>才是开发中的</strong>目的</strong></p>
-<p><img src="/images/stream5.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StreamTest4</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Student&gt; students = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;蜘蛛精&quot;</span>, <span class="number">26</span>, <span class="number">172.5</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;蜘蛛精&quot;</span>, <span class="number">26</span>, <span class="number">172.5</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;紫霞&quot;</span>, <span class="number">23</span>, <span class="number">167.6</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;白晶晶&quot;</span>, <span class="number">25</span>, <span class="number">169.0</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;牛魔王&quot;</span>, <span class="number">35</span>, <span class="number">183.3</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s6</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;牛夫人&quot;</span>, <span class="number">34</span>, <span class="number">168.5</span>);</span><br><span class="line">        Collections.addAll(students, s1, s2, s3, s4, s5, s6);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求4：请找出身高超过170的学生对象，并放到一个新集合中去返回。</span></span><br><span class="line">        <span class="comment">// 流只能收集一次。</span></span><br><span class="line">        List&lt;Student&gt; students1 = students.stream().filter(a -&gt; a.getHeight() &gt; <span class="number">170</span>).collect(Collectors.toList());</span><br><span class="line">        System.out.println(students1);</span><br><span class="line"></span><br><span class="line">        Set&lt;Student&gt; students2 = students.stream().filter(a -&gt; a.getHeight() &gt; <span class="number">170</span>).collect(Collectors.toSet());</span><br><span class="line">        System.out.println(students2);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求5：请找出身高超过170的学生对象，并把学生对象的名字和身高，存入到一个Map集合返回。</span></span><br><span class="line">        Map&lt;String, Double&gt; map =</span><br><span class="line">                students.stream().filter(a -&gt; a.getHeight() &gt; <span class="number">170</span>)</span><br><span class="line">                        .distinct().collect(Collectors.toMap(a -&gt; a.getName(), a -&gt; a.getHeight()));</span><br><span class="line">        System.out.println(map);</span><br><span class="line">        <span class="comment">// 下面这两种写法都可以</span></span><br><span class="line">        <span class="comment">//1.</span></span><br><span class="line">        Object[] arr = students.stream().filter(a -&gt; a.getHeight() &gt; <span class="number">170</span>).toArray();</span><br><span class="line">        <span class="comment">//2.</span></span><br><span class="line">        Student[] arr = students.stream().filter(a -&gt; a.getHeight() &gt; <span class="number">170</span>).toArray(len -&gt; <span class="keyword">new</span> <span class="title class_">Student</span>[len]);</span><br><span class="line">        System.out.println(Arrays.toString(arr));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1070,7 +1054,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
