@@ -151,6 +151,83 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/14/JDK8-Date/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/14/JDK8-Date/" class="post-title-link" itemprop="url">JDK8_Date</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-14 20:53:31" itemprop="dateCreated datePublished" datetime="2024-03-14T20:53:31+08:00">2024-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-29 21:37:58" itemprop="dateModified" datetime="2024-03-29T21:37:58+08:00">2024-03-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/images/zoneId.png"> </p>
+<p>ZonedDateTime是带时区时间</p>
+<p>JDK8以后的时间类，线程安全，并且修改后会返回一个新的对象，原先的不会丢失。</p>
+<p><strong>LocalDate:</strong>  年 月 日 星期 几</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"><span class="keyword">import</span> java.util.Calendar;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test1_LocalDate</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 0、获取本地日期对象(不可变对象)</span></span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld</span> <span class="operator">=</span> LocalDate.now(); <span class="comment">// 年 月 日</span></span><br><span class="line">        System.out.println(ld);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1、获取日期对象中的信息</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">year</span> <span class="operator">=</span> ld.getYear(); <span class="comment">// 年</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">month</span> <span class="operator">=</span> ld.getMonthValue(); <span class="comment">// 月(1-12)</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">day</span> <span class="operator">=</span> ld.getDayOfMonth(); <span class="comment">// 日</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">dayOfYear</span> <span class="operator">=</span> ld.getDayOfYear();  <span class="comment">// 一年中的第几天</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">dayOfWeek</span> <span class="operator">=</span> ld.getDayOfWeek().getValue(); <span class="comment">// 星期几</span></span><br><span class="line">        System.out.println(year);</span><br><span class="line">        System.out.println(day);</span><br><span class="line">        System.out.println(dayOfWeek);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、直接修改某个信息: withYear、withMonth、withDayOfMonth、withDayOfYear</span></span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld2</span> <span class="operator">=</span> ld.withYear(<span class="number">2099</span>);</span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld3</span> <span class="operator">=</span> ld.withMonth(<span class="number">12</span>);</span><br><span class="line">        System.out.println(ld2);</span><br><span class="line">        System.out.println(ld3);</span><br><span class="line">        System.out.println(ld);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3、把某个信息加多少: plusYears、plusMonths、plusDays、plusWeeks</span></span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld4</span> <span class="operator">=</span> ld.plusYears(<span class="number">2</span>);</span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld5</span> <span class="operator">=</span> ld.plusMonths(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4、把某个信息减多少：minusYears、minusMonths、minusDays、minusWeeks</span></span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld6</span> <span class="operator">=</span> ld.minusYears(<span class="number">2</span>);</span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld7</span> <span class="operator">=</span> ld.minusMonths(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 5、获取指定日期的LocalDate对象： public static LocalDate of(int year, int month, int dayOfMonth)</span></span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld8</span> <span class="operator">=</span> LocalDate.of(<span class="number">2099</span>, <span class="number">12</span>, <span class="number">12</span>);</span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld9</span> <span class="operator">=</span> LocalDate.of(<span class="number">2099</span>, <span class="number">12</span>, <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 6、判断2个日期对象，是否相等，在前还是在后： equals isBefore isAfter</span></span><br><span class="line">        System.out.println(ld8.equals(ld9));<span class="comment">// true</span></span><br><span class="line">        System.out.println(ld8.isAfter(ld)); <span class="comment">// true</span></span><br><span class="line">        System.out.println(ld8.isBefore(ld)); <span class="comment">// false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>LocalTime:</strong>  时 分 秒 纳秒   1秒&#x3D;1*10的九次方纳秒</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.LocalTime;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test2_LocalTime</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 0、获取本地时间对象</span></span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt</span> <span class="operator">=</span> LocalTime.now(); <span class="comment">// 时 分 秒 纳秒 不可变的</span></span><br><span class="line">        System.out.println(lt);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1、获取时间中的信息</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">hour</span> <span class="operator">=</span> lt.getHour(); <span class="comment">//时</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">minute</span> <span class="operator">=</span> lt.getMinute(); <span class="comment">//分</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">second</span> <span class="operator">=</span> lt.getSecond(); <span class="comment">//秒</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">nano</span> <span class="operator">=</span> lt.getNano(); <span class="comment">//纳秒</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、修改时间：withHour、withMinute、withSecond、withNano</span></span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt3</span> <span class="operator">=</span> lt.withHour(<span class="number">10</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt4</span> <span class="operator">=</span> lt.withMinute(<span class="number">10</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt5</span> <span class="operator">=</span> lt.withSecond(<span class="number">10</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt6</span> <span class="operator">=</span> lt.withNano(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3、加多少：plusHours、plusMinutes、plusSeconds、plusNanos</span></span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt7</span> <span class="operator">=</span> lt.plusHours(<span class="number">10</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt8</span> <span class="operator">=</span> lt.plusMinutes(<span class="number">10</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt9</span> <span class="operator">=</span> lt.plusSeconds(<span class="number">10</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt10</span> <span class="operator">=</span> lt.plusNanos(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4、减多少：minusHours、minusMinutes、minusSeconds、minusNanos</span></span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt11</span> <span class="operator">=</span> lt.minusHours(<span class="number">10</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt12</span> <span class="operator">=</span> lt.minusMinutes(<span class="number">10</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt13</span> <span class="operator">=</span> lt.minusSeconds(<span class="number">10</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt14</span> <span class="operator">=</span> lt.minusNanos(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 5、获取指定时间的LocalTime对象：</span></span><br><span class="line">        <span class="comment">// public static LocalTime of(int hour, int minute, int second)</span></span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt15</span> <span class="operator">=</span> LocalTime.of(<span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>);</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt16</span> <span class="operator">=</span> LocalTime.of(<span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 6、判断2个时间对象，是否相等，在前还是在后： equals isBefore isAfter</span></span><br><span class="line">        System.out.println(lt15.equals(lt16)); <span class="comment">// true</span></span><br><span class="line">        System.out.println(lt15.isAfter(lt)); <span class="comment">// false</span></span><br><span class="line">        System.out.println(lt15.isBefore(lt)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>LocalDateTime：</strong>年月日时分秒纳秒</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalTime;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test3_LocalDateTime</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 0、获取本地日期和时间对象。</span></span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt</span> <span class="operator">=</span> LocalDateTime.now(); <span class="comment">// 年 月 日 时 分 秒 纳秒</span></span><br><span class="line">        System.out.println(ldt);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1、可以获取日期和时间的全部信息</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">year</span> <span class="operator">=</span> ldt.getYear(); <span class="comment">// 年</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">month</span> <span class="operator">=</span> ldt.getMonthValue(); <span class="comment">// 月</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">day</span> <span class="operator">=</span> ldt.getDayOfMonth(); <span class="comment">// 日</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">dayOfYear</span> <span class="operator">=</span> ldt.getDayOfYear();  <span class="comment">// 一年中的第几天</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">dayOfWeek</span> <span class="operator">=</span> ldt.getDayOfWeek().getValue();  <span class="comment">// 获取是周几</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">hour</span> <span class="operator">=</span> ldt.getHour(); <span class="comment">//时</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">minute</span> <span class="operator">=</span> ldt.getMinute(); <span class="comment">//分</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">second</span> <span class="operator">=</span> ldt.getSecond(); <span class="comment">//秒</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">nano</span> <span class="operator">=</span> ldt.getNano(); <span class="comment">//纳秒</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、修改时间信息：</span></span><br><span class="line">        <span class="comment">// withYear withMonth withDayOfMonth withDayOfYear withHour</span></span><br><span class="line">        <span class="comment">// withMinute withSecond withNano</span></span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt2</span> <span class="operator">=</span> ldt.withYear(<span class="number">2029</span>);</span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt3</span> <span class="operator">=</span> ldt.withMinute(<span class="number">59</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3、加多少:</span></span><br><span class="line">        <span class="comment">// plusYears  plusMonths plusDays plusWeeks plusHours plusMinutes plusSeconds plusNanos</span></span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt4</span> <span class="operator">=</span> ldt.plusYears(<span class="number">2</span>);</span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt5</span> <span class="operator">=</span> ldt.plusMinutes(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4、减多少：</span></span><br><span class="line">        <span class="comment">// minusDays minusYears minusMonths minusWeeks minusHours minusMinutes minusSeconds minusNanos</span></span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt6</span> <span class="operator">=</span> ldt.minusYears(<span class="number">2</span>);</span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt7</span> <span class="operator">=</span> ldt.minusMinutes(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 5、获取指定日期和时间的LocalDateTime对象：</span></span><br><span class="line">        <span class="comment">// public static LocalDateTime of(int year, Month month, int dayOfMonth, int hour,</span></span><br><span class="line">        <span class="comment">//                                  int minute, int second, int nanoOfSecond)</span></span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt8</span> <span class="operator">=</span> LocalDateTime.of(<span class="number">2029</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">1222</span>);</span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt9</span> <span class="operator">=</span> LocalDateTime.of(<span class="number">2029</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">1222</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 6、 判断2个日期、时间对象，是否相等，在前还是在后： equals、isBefore、isAfter</span></span><br><span class="line">        System.out.println(ldt9.equals(ldt8));</span><br><span class="line">        System.out.println(ldt9.isAfter(ldt));</span><br><span class="line">        System.out.println(ldt9.isBefore(ldt));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 7、可以把LocalDateTime转换成LocalDate和LocalTime</span></span><br><span class="line">        <span class="comment">// public LocalDate toLocalDate()</span></span><br><span class="line">        <span class="comment">// public LocalTime toLocalTime()</span></span><br><span class="line">        <span class="comment">// public static LocalDateTime of(LocalDate date, LocalTime time)</span></span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">ld</span> <span class="operator">=</span> ldt.toLocalDate();</span><br><span class="line">        <span class="type">LocalTime</span> <span class="variable">lt</span> <span class="operator">=</span> ldt.toLocalTime();<span class="comment">//分</span></span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt10</span> <span class="operator">=</span> LocalDateTime.of(ld, lt);<span class="comment">//合</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>DateTimeFormatter:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.Instant;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"><span class="keyword">import</span> java.time.ZonedDateTime;</span><br><span class="line"><span class="keyword">import</span> java.time.format.DateTimeFormatter;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  目标：掌握JDK 8新增的DateTimeFormatter格式化器的用法。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test6_DateTimeFormatter</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 1、创建一个日期时间格式化器对象出来。</span></span><br><span class="line">        <span class="type">DateTimeFormatter</span> <span class="variable">formatter</span> <span class="operator">=</span> DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy年MM月dd日 HH:mm:ss&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、对时间进行格式化</span></span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">now</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line">        System.out.println(now);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">rs</span> <span class="operator">=</span> formatter.format(now); <span class="comment">// 正向格式化</span></span><br><span class="line">        System.out.println(rs);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3、格式化时间，其实还有一种方案。</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">rs2</span> <span class="operator">=</span> now.format(formatter); <span class="comment">// 反向格式化</span></span><br><span class="line">        System.out.println(rs2);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4、解析时间：解析时间一般使用LocalDateTime提供的解析方法来解析。</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">dateStr</span> <span class="operator">=</span> <span class="string">&quot;2029年12月12日 12:12:11&quot;</span>;</span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">ldt</span> <span class="operator">=</span> LocalDateTime.parse(dateStr, formatter);</span><br><span class="line">        System.out.println(ldt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/12/BigDecimal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -828,83 +905,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/08/2024-3-8-The-first-page/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/08/2024-3-8-The-first-page/" class="post-title-link" itemprop="url">2024.3.8 The first page.</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-03-08 22:14:06 / 修改时间：22:18:31" itemprop="dateCreated datePublished" datetime="2024-03-08T22:14:06+08:00">2024-03-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="标题一"><a href="#标题一" class="headerlink" title="标题一"></a>标题一</h1><h2 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h2><h3 id="标题三"><a href="#标题三" class="headerlink" title="标题三"></a>标题三</h3><h4 id="标题四"><a href="#标题四" class="headerlink" title="标题四"></a>标题四</h4><h5 id="标题五"><a href="#标题五" class="headerlink" title="标题五"></a>标题五</h5><p><strong>这是加粗</strong></p>
-<p><em>这是斜体</em></p>
-<p><del>这是删除线</del></p>
-<ul>
-<li>无序列表</li>
-<li>无序列表</li>
-</ul>
-<ol>
-<li>有序列表</li>
-<li>有序列表</li>
-</ol>
-<p><code>内嵌代码</code></p>
-<blockquote>
-<p>引用</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -970,12 +974,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
