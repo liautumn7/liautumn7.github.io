@@ -151,6 +151,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/15/%E5%8E%9F%E5%A7%8B%E6%B5%81%E3%80%81%E7%BC%93%E5%86%B2%E6%B5%81%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/15/%E5%8E%9F%E5%A7%8B%E6%B5%81%E3%80%81%E7%BC%93%E5%86%B2%E6%B5%81%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">原始流、缓冲流的性能分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-15 16:31:14 / 修改时间：17:20:16" itemprop="dateCreated datePublished" datetime="2024-04-15T16:31:14+08:00">2024-04-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>测试用例：</strong></p>
+<ul>
+<li>分别使用原始的字节流，以及字节缓冲流复制一个很大视频。</li>
+</ul>
+<p><strong>测试步骤：</strong></p>
+<ol>
+<li>使用低级的字节流按照一个一个字节的形式复制文件</li>
+<li>使用低级的字节流按照字节数组的形式复制文件。</li>
+<li>使用高级的缓冲字节流按照一个一个字节的形式复制文件。</li>
+<li>使用高级的缓冲字节流按照字节数组的形式复制文件。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="comment">// 复制的视频路径</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">SRC_FILE</span> <span class="operator">=</span> <span class="string">&quot;D:\\test1\\videos\\vvv2.mp4&quot;</span>;</span><br><span class="line">    <span class="comment">// 复制到哪个目的地</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">DEST_FILE</span> <span class="operator">=</span> <span class="string">&quot;E:\\test2\\&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// copy01(); // 低级字节流一个一个字节的赋值，慢的简直让人无法忍受，直接淘汰！</span></span><br><span class="line">        copy02();<span class="comment">// 低级的字节流流按照一个一个字节数组的形式复制，速度较慢！</span></span><br><span class="line">        copy03(); <span class="comment">// 缓冲流按照一个一个字节的形式复制，速度较慢,直接淘汰！</span></span><br><span class="line">        copy04(); <span class="comment">// 缓冲流按照一个一个字节数组的形式复制，速度极快，推荐使用！</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">copy01</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">startTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(SRC_FILE);</span><br><span class="line">                <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(DEST_FILE + <span class="string">&quot;1.mp4&quot;</span>);</span><br><span class="line">        )&#123;</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> b;</span><br><span class="line">            <span class="keyword">while</span> ((b = is.read()) != -<span class="number">1</span>)&#123;</span><br><span class="line">                os.write(b);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">endTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;低级字节流一个一个字节复制耗时：&quot;</span> + (endTime - startTime) / <span class="number">1000.0</span> + <span class="string">&quot;s&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">copy02</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">startTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(SRC_FILE);</span><br><span class="line">                <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(DEST_FILE + <span class="string">&quot;2.mp4&quot;</span>);</span><br><span class="line">        )&#123;</span><br><span class="line">            <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="type">int</span> len;</span><br><span class="line">            <span class="keyword">while</span> ((len = is.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                os.write(buffer, <span class="number">0</span>, len);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">endTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;低级字节流使用字节数组复制耗时：&quot;</span> + (endTime - startTime) / <span class="number">1000.0</span> + <span class="string">&quot;s&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">copy03</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">startTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(SRC_FILE);</span><br><span class="line">                <span class="type">BufferedInputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(is);</span><br><span class="line">                <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(DEST_FILE + <span class="string">&quot;3.mp4&quot;</span>);</span><br><span class="line">                <span class="type">BufferedOutputStream</span> <span class="variable">bos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedOutputStream</span>(os);</span><br><span class="line">        )&#123;</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> b;</span><br><span class="line">            <span class="keyword">while</span> ((b = bis.read()) != -<span class="number">1</span>)&#123;</span><br><span class="line">                bos.write(b);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">endTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;缓冲流一个一个字节复制耗时：&quot;</span> + (endTime - startTime) / <span class="number">1000.0</span> + <span class="string">&quot;s&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">copy04</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">startTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(SRC_FILE);</span><br><span class="line">                <span class="type">BufferedInputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(is);</span><br><span class="line">                <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(DEST_FILE + <span class="string">&quot;4.mp4&quot;</span>);</span><br><span class="line">                <span class="type">BufferedOutputStream</span> <span class="variable">bos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedOutputStream</span>(os);</span><br><span class="line">        )&#123;</span><br><span class="line">            <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>]; <span class="comment">// 1KB</span></span><br><span class="line">            <span class="type">int</span> len;</span><br><span class="line">            <span class="keyword">while</span> ((len = bis.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                bos.write(buffer, <span class="number">0</span>, len);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">endTime</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;缓冲流使用字节数组复制耗时：&quot;</span> + (endTime - startTime) / <span class="number">1000.0</span> + <span class="string">&quot;s&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/xingneng1.png"></p>
+<p>在这里我准备了一个1.25GB的视频，从D盘复制到E盘，共1,347,021,630字节，利用第一种复制方法需要调用系统资源将近三十亿多次，时间太久了，直接放弃。</p>
+<p>这里字节数组1k，缓冲区默认8k的结果</p>
+<p><img src="/images/xingneng2.png"></p>
+<p>把他们都乘以16</p>
+<p><img src="/images/xingneng3.png"></p>
+<p>把他们都乘以32</p>
+<p><img src="/images/xingneng4.png"></p>
+<p>把他们都乘以64</p>
+<p><img src="/images/xingneng5.png"></p>
+<p>可见，随着字节数组和缓冲区的增大，视频复制速度会变快，但是变快的速度越来越慢，大致与下面的图类似</p>
+<p><img src="/images/xingneng6.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/14/%E7%BC%93%E5%86%B2%E6%B5%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -918,79 +1001,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/05/Stream%E6%B5%811/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/04/05/Stream%E6%B5%811/" class="post-title-link" itemprop="url">认识Stream流</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-04-05 17:41:09 / 修改时间：18:00:00" itemprop="dateCreated datePublished" datetime="2024-04-05T17:41:09+08:00">2024-04-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> <strong>什么是Stream?</strong></p>
-<ul>
-<li>也叫Stream流，是<strong>Jdk8</strong>开始新增的一套APl(java.util.stream.<em>)，可以*<em>用于操作集合或者数组的数据。</em></em></li>
-<li>优势: Stream流<strong>大量的结合了Lambda的语法风格</strong>来编程，提供了一种更加强大，更加简单的方式操作集合或者数组中的数据，<strong>代码更简洁，可读性更好</strong>。</li>
-</ul>
-<p>下面是传统代码与使用Stream流的对比</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StreamTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;String&gt; names = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Collections.addAll(names, <span class="string">&quot;张三丰&quot;</span>,<span class="string">&quot;张无忌&quot;</span>,<span class="string">&quot;周芷若&quot;</span>,<span class="string">&quot;赵敏&quot;</span>,<span class="string">&quot;张强&quot;</span>);</span><br><span class="line">        System.out.println(names);</span><br><span class="line">        <span class="comment">// names = [张三丰, 张无忌, 周芷若, 赵敏, 张强]</span></span><br><span class="line">        <span class="comment">//          name</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 找出姓张，且是3个字的名字，存入到一个新集合中去。</span></span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (String name : names) &#123;</span><br><span class="line">            <span class="keyword">if</span>(name.startsWith(<span class="string">&quot;张&quot;</span>) &amp;&amp; name.length() == <span class="number">3</span>)&#123;</span><br><span class="line">                list.add(name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 开始使用Stream流来解决这个需求。</span></span><br><span class="line">        List&lt;String&gt; list2 = names.stream().filter(s -&gt; s.startsWith(<span class="string">&quot;张&quot;</span>))</span><br><span class="line">                                            <span class="comment">//筛选         //以什么开始</span></span><br><span class="line">                .filter(a -&gt; a.length()==<span class="number">3</span>).collect(Collectors.toList());</span><br><span class="line">                                                        <span class="comment">//转换成List集合</span></span><br><span class="line">        System.out.println(list2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Steam流的使用步骤：</strong></p>
-<ul>
-<li>获取Stream流</li>
-<li>用中间方法对数据进行处理</li>
-<li>用终结方法获取处理的结果</li>
-</ul>
-<p><img src="/images/stream1.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1060,7 +1070,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

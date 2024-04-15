@@ -151,6 +151,170 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/22/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/22/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-22 21:20:40" itemprop="dateCreated datePublished" datetime="2024-03-22T21:20:40+08:00">2024-03-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-26 15:09:35" itemprop="dateModified" datetime="2024-03-26T15:09:35+08:00">2024-03-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>  取自jdk17api文档</p>
+<table>
+<thead>
+<tr>
+<th>字符类</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[abc]</code></td>
+<td><code>a</code>、<code>b</code> 或 <code>c</code>（简单类）</td>
+</tr>
+<tr>
+<td><code>[^abc]</code></td>
+<td>除 <code>a</code> 、 <code>b</code> 或 <code>c</code> （否定）之外的任何字符</td>
+</tr>
+<tr>
+<td><code>[a-zA-Z]</code></td>
+<td><code>a</code> 到 <code>z</code> 或 <code>A</code> 到 <code>Z</code> ，包括（范围）</td>
+</tr>
+<tr>
+<td><code>[a-d[m-p]]</code></td>
+<td><code>a</code> 到 <code>d</code>，或 <code>m</code> 到 <code>p</code>：<code>[a-dm-p]</code>（联合）</td>
+</tr>
+<tr>
+<td><code>[a-z&amp;&amp;[def]]</code></td>
+<td><code>d</code> 、 <code>e</code> 或 <code>f</code> （交叉路口）</td>
+</tr>
+<tr>
+<td><code>[a-z&amp;&amp;[^bc]]</code></td>
+<td><code>a</code> 到 <code>z</code>，除了 <code>b</code> 和 <code>c</code>：<code>[ad-z]</code>（减法）</td>
+</tr>
+<tr>
+<td><code>[a-z&amp;&amp;[^m-p]]</code></td>
+<td><code>a</code> 到 <code>z</code>，而不是 <code>m</code> 到 <code>p</code>：<code>[a-lq-z]</code>（减法）</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>预定义字符类</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.</code></td>
+<td>任何字符（可能匹配也可能不匹配 行终止符）</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>一个数字：<code>[0-9]</code></td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>非数字：<code>[^0-9]</code></td>
+</tr>
+<tr>
+<td><code>\h</code></td>
+<td>水平空白字符：<code>[ \t\xA0\u1680\u180e\u2000-\u200a\u202f\u205f\u3000]</code></td>
+</tr>
+<tr>
+<td><code>\H</code></td>
+<td>非水平空白字符：<code>[^\h]</code></td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>空白字符：<code>[ \t\n\x0B\f\r]</code></td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>非空白字符：<code>[^\s]</code></td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>垂直空白字符：<code>[\n\x0B\f\r\x85\u2028\u2029]</code></td>
+</tr>
+<tr>
+<td><code>\V</code></td>
+<td>非垂直空白字符：<code>[^\v]</code></td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>一个字字符：<code>[a-zA-Z_0-9]</code></td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td>非单词字符：<code>[^\w]</code></td>
+</tr>
+</tbody></table>
+<p><strong>作用一：用来校验数据格式是否合法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目标：体验一下使用正则表达式来校验数据格式的合法性。</span></span><br><span class="line"><span class="comment"> * 需求：校验QQ号码是否正确，要求全部是数字，长度是（6-20）之间，不能以0开头。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RegexTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(checkQQ(<span class="literal">null</span>));</span><br><span class="line">        System.out.println(checkQQ(<span class="string">&quot;251425876&quot;</span>));</span><br><span class="line">        System.out.println(checkQQ(<span class="string">&quot;2514a8d76&quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;--------------------------------------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(checkQQ1(<span class="literal">null</span>));</span><br><span class="line">        System.out.println(checkQQ1(<span class="string">&quot;251425876&quot;</span>));</span><br><span class="line">        System.out.println(checkQQ1(<span class="string">&quot;2514a8d76&quot;</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//正则表达式只需要一行</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">checkQQ1</span><span class="params">(String qq)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> qq != <span class="literal">null</span> &amp;&amp; qq.matches(<span class="string">&quot;[1-9]\\d&#123;5,19&#125;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//常规的写法</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">checkQQ</span><span class="params">(String qq)</span>&#123;</span><br><span class="line">        <span class="comment">// 1、判断qq号码是否为null</span></span><br><span class="line">        <span class="keyword">if</span>(qq == <span class="literal">null</span> || qq.startsWith(<span class="string">&quot;0&quot;</span>) || qq.length() &lt; <span class="number">6</span> || qq.length() &gt; <span class="number">20</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、qq至少是不是null,不是以0开头的，满足6-20之间的长度。</span></span><br><span class="line">        <span class="comment">// 判断qq号码中是否都是数字。</span></span><br><span class="line">        <span class="comment">// qq = 2514ghd234</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; qq.length(); i++) &#123;</span><br><span class="line">            <span class="comment">// 根据索引提取当前位置处的字符。</span></span><br><span class="line">            <span class="type">char</span> <span class="variable">ch</span> <span class="operator">=</span> qq.charAt(i);</span><br><span class="line">            <span class="comment">// 判断ch记住的字符，如果不是数字，qq号码不合法。</span></span><br><span class="line">            <span class="keyword">if</span>(ch &lt; <span class="string">&#x27;0&#x27;</span> || ch &gt; <span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 3、说明qq号码肯定是合法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目标：校验用户输入的电话、邮箱、时间是否合法。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RegexTest3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// checkPhone();</span></span><br><span class="line">        checkEmail();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">checkPhone</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;请您输入您的电话号码(手机|座机): &quot;</span>);</span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">            <span class="type">String</span> <span class="variable">phone</span> <span class="operator">=</span> sc.nextLine();</span><br><span class="line">            <span class="comment">// 18676769999  010-3424242424 0104644535</span></span><br><span class="line">            <span class="keyword">if</span>(phone.matches(<span class="string">&quot;(1[3-9]\\d&#123;9&#125;)|(0\\d&#123;2,7&#125;-?[1-9]\\d&#123;4,19&#125;)&quot;</span>))&#123;</span><br><span class="line">            <span class="comment">//1开头 第二位数字范围3-9 数字类型 九个数字      -？为可以出现0或1次-</span></span><br><span class="line">                System.out.println(<span class="string">&quot;您输入的号码格式正确~~~&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;您输入的号码格式不正确~~~&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">checkEmail</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;请您输入您的邮箱： &quot;</span>);</span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">            <span class="type">String</span> <span class="variable">email</span> <span class="operator">=</span> sc.nextLine();</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * dlei0009@163.com</span></span><br><span class="line"><span class="comment">             * 25143242@qq.com</span></span><br><span class="line"><span class="comment">             * itheima@itcast.com.cn</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="keyword">if</span>(email.matches(<span class="string">&quot;\\w&#123;2,&#125;@\\w&#123;2,20&#125;(\\.\\w&#123;2,10&#125;)&#123;1,2&#125;&quot;</span>))&#123;</span><br><span class="line">              <span class="comment">// \\w代表数字字母下划线  (\\.\\w&#123;2,10&#125;)&#123;1,2&#125;代表小括号内的可以出现一或两次                                                   //次数</span></span><br><span class="line">                System.out.println(<span class="string">&quot;您输入的邮箱格式正确~~~&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;您输入的邮箱格式不正确~~~&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用二：在一段文本中查找满足要求的内容</strong></p>
+<p>用正则表达式查找内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目标：掌握使用正则表达式查找内容。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RegexTest4</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        method1();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 需求1：从以下内容中爬取出，手机，邮箱，座机、400电话等信息。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">method1</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot; 来黑马程序员学习Java，\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;        电话：1866668888，18699997777\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;        或者联系邮箱：boniu@itcast.cn，\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;        座机电话：01036517895，010-98951256\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;        邮箱：bozai@itcast.cn，\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;        邮箱：dlei0009@163.com，\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;        热线电话：400-618-9090 ，400-618-4000，4006184000，4006189090&quot;</span>;</span><br><span class="line">        <span class="comment">// 1、定义爬取规则</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">regex</span> <span class="operator">=</span> <span class="string">&quot;(1[3-9]\\d&#123;9&#125;)|(0\\d&#123;2,7&#125;-?[1-9]\\d&#123;4,19&#125;)|(\\w&#123;2,&#125;@\\w&#123;2,20&#125;(\\.\\w&#123;2,10&#125;)&#123;1,2&#125;)&quot;</span></span><br><span class="line">                + <span class="string">&quot;|(400-?\\d&#123;3,7&#125;-?\\d&#123;3,7&#125;)&quot;</span>;</span><br><span class="line">        <span class="comment">// 2、把正则表达式封装成一个Pattern对象</span></span><br><span class="line">        <span class="type">Pattern</span> <span class="variable">pattern</span> <span class="operator">=</span> Pattern.compile(regex);</span><br><span class="line">        <span class="comment">// 3、通过pattern对象去获取查找内容的匹配器对象。</span></span><br><span class="line">        <span class="type">Matcher</span> <span class="variable">matcher</span> <span class="operator">=</span> pattern.matcher(data);</span><br><span class="line">        <span class="comment">// 4、定义一个循环开始爬取信息</span></span><br><span class="line">        <span class="keyword">while</span> (matcher.find())&#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">rs</span> <span class="operator">=</span> matcher.group(); <span class="comment">// 获取到了找到的内容了。</span></span><br><span class="line">            System.out.println(rs);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用正则表达式做搜索替换，内容分割</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目标：掌握使用正则表达式做搜索替换，内容分割。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RegexTest6</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 1、public String replaceAll(String regex , String newStr)：按照正则表达式匹配的内容进行替换</span></span><br><span class="line">        <span class="comment">// 需求1：请把 古力娜扎ai8888迪丽热巴999aa5566马尔扎哈fbbfsfs42425卡尔扎巴，中间的非中文字符替换成 “-”</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;古力娜扎ai8888迪丽热巴999aa5566马尔扎哈fbbfsfs42425卡尔扎巴&quot;</span>;</span><br><span class="line">        System.out.println(s1.replaceAll(<span class="string">&quot;\\w+&quot;</span>, <span class="string">&quot;-&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求2(拓展)：某语音系统，收到一个口吃的人说的“我我我喜欢编编编编编编编编编编编编程程程！”，需要优化成“我喜欢编程！”。</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;我我我喜欢编编编编编编编编编编编编程程程&quot;</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * (.)一组：.匹配任意字符的。</span></span><br><span class="line"><span class="comment">         * \\1 :为这个组声明一个组号：1号</span></span><br><span class="line"><span class="comment">         * +：声明必须是重复的字</span></span><br><span class="line"><span class="comment">         * $1可以去取到第1组代表的那个重复的字</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        System.out.println(s2.replaceAll(<span class="string">&quot;(.)\\1+&quot;</span>, <span class="string">&quot;$1&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、public String[] split(String regex)：按照正则表达式匹配的内容进行分割字符串，反回一个字符串数组。</span></span><br><span class="line">        <span class="comment">// 需求1：请把 古力娜扎ai8888迪丽热巴999aa5566马尔扎哈fbbfsfs42425卡尔扎巴，中的人名获取出来。</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="string">&quot;古力娜扎ai8888迪丽热巴999aa5566马尔扎哈fbbfsfs42425卡尔扎巴&quot;</span>;</span><br><span class="line">        String[] names = s3.split(<span class="string">&quot;\\w+&quot;</span>);</span><br><span class="line">        System.out.println(Arrays.toString(names));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/22/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -818,80 +982,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/09/%E5%88%9D%E8%AF%86ARRLIST/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/09/%E5%88%9D%E8%AF%86ARRLIST/" class="post-title-link" itemprop="url">初识ARRAYLIST</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-03-09 12:18:55" itemprop="dateCreated datePublished" datetime="2024-03-09T12:18:55+08:00">2024-03-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-29 21:21:41" itemprop="dateModified" datetime="2024-03-29T21:21:41+08:00">2024-03-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>  <img src="/images/arraylist.jpg"></p>
-<p>这好像是类似外卖平台的，可以上架和查看。</p>
-<p>测试类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//完成菜品的上架和展示  包括名称价格和描述</span></span><br><span class="line">        <span class="type">FoodOperator</span> <span class="variable">operator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FoodOperator</span>();</span><br><span class="line">        operator.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>封装的实物类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima.demoARRLIST;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Food</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> price;</span><br><span class="line">    <span class="keyword">private</span> String desc;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Food</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Food</span><span class="params">(String name, <span class="type">double</span> price, String desc)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">        <span class="built_in">this</span>.desc = desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getPrice</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPrice</span><span class="params">(<span class="type">double</span> price)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getDesc</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDesc</span><span class="params">(String desc)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.desc = desc;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>食物操作类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FoodOperator</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;Food&gt; foodList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();<span class="comment">//个人理解：arraylist就是一个可以放任何对象的数组</span></span><br><span class="line">    <span class="comment">//上架、展示和操作</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addFood</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">Food</span> <span class="variable">food</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Food</span>();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入菜品名称：&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> sc.next();</span><br><span class="line">        food.setName(name);</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入菜品价格：&quot;</span>);</span><br><span class="line">            <span class="type">double</span> <span class="variable">price</span> <span class="operator">=</span> sc.nextDouble();</span><br><span class="line">            <span class="keyword">if</span>(price &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;您输入的价格有误，请重试！&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                food.setPrice(price);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入菜品介绍：&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">desc</span> <span class="operator">=</span> sc.next();</span><br><span class="line">        food.setDesc(desc);</span><br><span class="line">        foodList.add(food);</span><br><span class="line">        System.out.println(<span class="string">&quot;上架成功！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showFood</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (foodList.size() &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;您还没有上架菜品。&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; foodList.size(); i++) &#123;</span><br><span class="line">                <span class="type">Food</span> <span class="variable">food</span> <span class="operator">=</span> foodList.get(i);</span><br><span class="line">                System.out.println(<span class="string">&quot;名称：&quot;</span> + food.getName());</span><br><span class="line">                System.out.println(<span class="string">&quot;价格：&quot;</span> + food.getPrice());</span><br><span class="line">                System.out.println(<span class="string">&quot;描述：&quot;</span> + food.getDesc());</span><br><span class="line">                System.out.println(<span class="string">&quot;-------------------&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;按1上架菜品&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;按2展示菜品&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;按3退出系统&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;请选择您要进行的操作：&quot;</span>);</span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">            <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> sc.next();</span><br><span class="line">            <span class="keyword">switch</span> (type)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;1&quot;</span>:&#123;</span><br><span class="line">                    addFood();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;2&quot;</span>:&#123;</span><br><span class="line">                    showFood();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;3&quot;</span>:&#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;欢迎再次使用！&quot;</span>);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">default</span>:&#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;您输入的指令有误，请重试！&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -961,7 +1051,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
