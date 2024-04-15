@@ -151,6 +151,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/10/IO%E6%B5%81%E5%AD%97%E8%8A%82%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/10/IO%E6%B5%81%E5%AD%97%E8%8A%82%E6%B5%81/" class="post-title-link" itemprop="url">IO流字节流——文件字节输入流FileInputStream</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-10 18:32:20" itemprop="dateCreated datePublished" datetime="2024-04-10T18:32:20+08:00">2024-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-14 20:45:55" itemprop="dateModified" datetime="2024-04-14T20:45:55+08:00">2024-04-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="/images/io1.png"></p>
+<p><strong>流的四大类：</strong></p>
+<ul>
+<li>字节输入流:以内存为基准，来自磁盘文件&#x2F;网络中的数据以<strong>字节的形式读入到内存</strong>中去的流</li>
+<li>字节输出流:以内存为基准，把内存中的数据以<strong>字节写出到磁盘文件或者网络中</strong>去的流</li>
+<li>字符输入流:以内存为基准，来自磁盘文件&#x2F;网络中的数据<strong>以字符的形式读入到内存</strong>中去的流</li>
+<li>字符输出流:以内存为基准，把内存中的数据以<strong>字符写出到磁盘文件或者网络介质中</strong>去的流</li>
+</ul>
+<p><img src="/images/io2.png"></p>
+<p><strong>FileInputStream(文件字节输入流)</strong></p>
+<ul>
+<li>作用:以内存为基准，可以把磁盘文件中的数据以字节的形式读入到内存中去</li>
+</ul>
+<p><img src="/images/io3.png"></p>
+<p>1.每次读取一个字节，读取性能较差，并且读取汉字输出会乱码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FileInputStreamTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 1、创建文件字节输入流管道，与源文件接通。</span></span><br><span class="line">        <span class="comment">// InputStream is = new FileInputStream(new File(&quot;file-io-app\\src\\fileinputstream01.txt&quot;));</span></span><br><span class="line">        <span class="comment">// 简化写法：推荐使用。</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>((<span class="string">&quot;file-io-app\\src\\itheima01.txt&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、开始读取文件的字节数据。</span></span><br><span class="line">        <span class="comment">// public int read():每次读取一个字节返回，如果没有数据了，返回-1.</span></span><br><span class="line"><span class="comment">//        int b1 = is.read();</span></span><br><span class="line"><span class="comment">//        System.out.println((char)b1);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        int b2 = is.read();</span></span><br><span class="line"><span class="comment">//        System.out.println((char) b2);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        int b3 = is.read();</span></span><br><span class="line"><span class="comment">//        System.out.println(b3);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3、使用循环改造上述代码</span></span><br><span class="line">        <span class="type">int</span> b; <span class="comment">// 用于记住读取的字节。</span></span><br><span class="line">        <span class="keyword">while</span> ((b = is.read()) != -<span class="number">1</span>)&#123;</span><br><span class="line">            System.out.print((<span class="type">char</span>) b);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 读取数据的性能很差！  因为会频繁的调用系统资源</span></span><br><span class="line">        <span class="comment">// 读取汉字输出会乱码！！无法避免的！！</span></span><br><span class="line">        <span class="comment">// 流使用完毕之后，必须关闭！释放系统资源！</span></span><br><span class="line">        is.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>2.一次读取多个字节，读取性能得到了提升，但读取汉字输出还是会乱码</p>
+<p>要想一次读取多个字节，就必须要用到FileInputStream重载的read方法</p>
+<p><img src="/images/io4.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FileInputStreamTest2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 1、创建一个字节输入流对象代表字节输入流管道与源文件接通。</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;file-io-app\\src\\fileinputstream02.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、开始读取文件中的字节数据：每次读取多个字节。</span></span><br><span class="line">        <span class="comment">//  public int read(byte b[]) throws IOException</span></span><br><span class="line">        <span class="comment">//  每次读取多个字节到字节数组中去，返回读取的字节数量，读取完毕会返回-1.</span></span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">3</span>];   <span class="comment">// buffer相当于是个水桶</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> is.read(buffer);</span><br><span class="line">        <span class="type">String</span> <span class="variable">rs</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(buffer);</span><br><span class="line">        System.out.println(rs);</span><br><span class="line">        System.out.println(<span class="string">&quot;当次读取的字节数量：&quot;</span> + len);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// buffer = [abc]</span></span><br><span class="line">        <span class="comment">// buffer = [66c]</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">len2</span> <span class="operator">=</span> is.read(buffer);</span><br><span class="line">        <span class="comment">// 注意：读取多少，倒出多少。</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">rs2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(buffer, <span class="number">0</span>, len2);</span><br><span class="line">        System.out.println(rs2);</span><br><span class="line">        System.out.println(<span class="string">&quot;当次读取的字节数量：&quot;</span> + len2);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">len3</span> <span class="operator">=</span> is.read(buffer);</span><br><span class="line">        System.out.println(len3); <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3、使用循环改造。</span></span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="type">int</span> len; <span class="comment">// 记住每次读取了多少个字节。  abc 66</span></span><br><span class="line">        <span class="keyword">while</span> ((len = is.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">// 注意：读取多少，倒出多少。</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">rs</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(buffer, <span class="number">0</span> , len);</span><br><span class="line">            System.out.print(rs);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 性能得到了明显的提升！！</span></span><br><span class="line">        <span class="comment">// 这种方案也不能避免读取汉字输出乱码的问题！！</span></span><br><span class="line"></span><br><span class="line">        is.close(); <span class="comment">// 关闭流</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.一次性读取全部字节，并且读取汉字输出不乱码</p>
+<p>方式一：自己定义一个字节数组与被读取的文件大小一样大，然后使用该字节数组，一次读完文件的全部字节。</p>
+<p><img src="/images/io4.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FileInputStreamTest3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 1、一次性读取完文件的全部字节到一个字节数组中去。</span></span><br><span class="line">        <span class="comment">// 创建一个字节输入流管道与源文件接通</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;file-io-app\\src\\fileinputstream03.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2、准备一个字节数组，大小与文件的大小正好一样大。</span></span><br><span class="line">        <span class="type">File</span> <span class="variable">f</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;file-io-app\\src\\fileinputstream03.txt&quot;</span>);</span><br><span class="line">        <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> f.length();</span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[(<span class="type">int</span>) size];<span class="comment">//适合不是特别大的文件</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> is.read(buffer);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> <span class="title class_">String</span>(buffer));</span><br><span class="line"></span><br><span class="line">        System.out.println(size);</span><br><span class="line">        System.out.println(len);</span><br><span class="line"></span><br><span class="line">        is.close(); <span class="comment">// 关闭流</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>方式二：Java官方为InputStream提供了方法，可以直接把文件的全部字节读取到一个字节数组中返回。</p>
+<p><img src="/images/io5.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FileInputStreamTest3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个字节输入流管道与源文件接通</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;file-io-app\\src\\fileinputstream03.txt&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">byte</span>[] buffer = is.readAllBytes();</span><br><span class="line">        System.out.println(<span class="keyword">new</span> <span class="title class_">String</span>(buffer));</span><br><span class="line"></span><br><span class="line">        is.close(); <span class="comment">// 关闭流</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>总结：需要注意，直接把文件数据全部读取到一个字节数组，确实可以避免汉字输出乱码，<strong>但是如果文件过大，创建的字节数组也会过大，可能引起内存溢出。</strong></p>
+<p>所以，<strong>读取文本内容</strong>更适合用<strong>字符流</strong>，而<strong>字节流</strong>更适合做<strong>数据的转移</strong>，例如文件复制等。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/04/10/%E5%AD%97%E7%AC%A6%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -859,77 +966,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/30/%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/30/%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">集合的并发修改异常问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-03-30 14:49:09" itemprop="dateCreated datePublished" datetime="2024-03-30T14:49:09+08:00">2024-03-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-31 18:17:50" itemprop="dateModified" datetime="2024-03-31T18:17:50+08:00">2024-03-31</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> 集合有多种遍历方式，迭代器，增强for，lambda，list还可以用for循环</p>
-<ul>
-<li>在使用<strong>普通的for循环</strong>遍历删除时，可以在删除成功时让i自减一次，以免漏删，也可以从后往前删来避免漏删问题</li>
-<li>在用<strong>迭代器</strong>遍历删除时，如果用<strong>对象的remove方法</strong>会触发并发修改异常，此时要用<strong>迭代器的remove方法</strong>来删除，相当于在底层每删一次i自减一次</li>
-<li>在使用<strong>增强for和lambda表达式</strong>遍历删除时<strong>无法</strong>解决并发修改异常问题</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目标：理解集合的并发修改异常问题，并解决。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CollectionTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">&quot;王麻子&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;小李子&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;李爱花&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;张全蛋&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;晓李&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;李旭阳&quot;</span>);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        <span class="comment">//  [王麻子, 小李子, 李爱花, 张全蛋, 晓李, 李旭阳]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求：找出集合中全部带“李”的名字，并从集合中删除。</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//迭代器</span></span><br><span class="line">        Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext())&#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> it.next();</span><br><span class="line">            <span class="keyword">if</span>(name.contains(<span class="string">&quot;李&quot;</span>))&#123;</span><br><span class="line">             <span class="comment">// list.remove(name); // 并发修改异常的错误。</span></span><br><span class="line">                it.remove(); <span class="comment">// 删除迭代器当前遍历到的数据，每删除一个数据后，相当于也在底层做了i--</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;---------------------------------------------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// for循环遍历集合并删除集合中带李字的名字</span></span><br><span class="line">        <span class="comment">//  [王麻子, 小李子, 李爱花, 张全蛋, 晓李, 李旭阳]</span></span><br><span class="line">        <span class="comment">//  [王麻子, 张全蛋]</span></span><br><span class="line">        <span class="comment">//                  i</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> list.get(i);</span><br><span class="line">            <span class="keyword">if</span>(name.contains(<span class="string">&quot;李&quot;</span>))&#123;</span><br><span class="line">                list.remove(name);</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 倒着去删除也是可以的。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> list.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> list.get(i);</span><br><span class="line">            <span class="keyword">if</span>(name.contains(<span class="string">&quot;李&quot;</span>))&#123;</span><br><span class="line">                list.remove(name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 增强for循环遍历集合并删除数据，没有办法解决bug.</span></span><br><span class="line"><span class="comment">//        for (String name : list) &#123;</span></span><br><span class="line"><span class="comment">//            if(name.contains(&quot;李&quot;))&#123;</span></span><br><span class="line"><span class="comment">//                list.remove(name);</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        System.out.println(list);</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//lambda表达式也无法解决bug</span></span><br><span class="line"><span class="comment">//        list.forEach(name -&gt; &#123;</span></span><br><span class="line"><span class="comment">//            if(name.contains(&quot;李&quot;))&#123;</span></span><br><span class="line"><span class="comment">//                list.remove(name);</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line"><span class="comment">//        System.out.println(list);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -999,7 +1035,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

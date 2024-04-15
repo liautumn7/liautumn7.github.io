@@ -151,6 +151,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/30/%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nianbao Li">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qdy">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/30/%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">集合的并发修改异常问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-30 14:49:09" itemprop="dateCreated datePublished" datetime="2024-03-30T14:49:09+08:00">2024-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-03-31 18:17:50" itemprop="dateModified" datetime="2024-03-31T18:17:50+08:00">2024-03-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p> 集合有多种遍历方式，迭代器，增强for，lambda，list还可以用for循环</p>
+<ul>
+<li>在使用<strong>普通的for循环</strong>遍历删除时，可以在删除成功时让i自减一次，以免漏删，也可以从后往前删来避免漏删问题</li>
+<li>在用<strong>迭代器</strong>遍历删除时，如果用<strong>对象的remove方法</strong>会触发并发修改异常，此时要用<strong>迭代器的remove方法</strong>来删除，相当于在底层每删一次i自减一次</li>
+<li>在使用<strong>增强for和lambda表达式</strong>遍历删除时<strong>无法</strong>解决并发修改异常问题</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目标：理解集合的并发修改异常问题，并解决。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CollectionTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">&quot;王麻子&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;小李子&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;李爱花&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;张全蛋&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;晓李&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;李旭阳&quot;</span>);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        <span class="comment">//  [王麻子, 小李子, 李爱花, 张全蛋, 晓李, 李旭阳]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需求：找出集合中全部带“李”的名字，并从集合中删除。</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//迭代器</span></span><br><span class="line">        Iterator&lt;String&gt; it = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext())&#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> it.next();</span><br><span class="line">            <span class="keyword">if</span>(name.contains(<span class="string">&quot;李&quot;</span>))&#123;</span><br><span class="line">             <span class="comment">// list.remove(name); // 并发修改异常的错误。</span></span><br><span class="line">                it.remove(); <span class="comment">// 删除迭代器当前遍历到的数据，每删除一个数据后，相当于也在底层做了i--</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;---------------------------------------------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// for循环遍历集合并删除集合中带李字的名字</span></span><br><span class="line">        <span class="comment">//  [王麻子, 小李子, 李爱花, 张全蛋, 晓李, 李旭阳]</span></span><br><span class="line">        <span class="comment">//  [王麻子, 张全蛋]</span></span><br><span class="line">        <span class="comment">//                  i</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> list.get(i);</span><br><span class="line">            <span class="keyword">if</span>(name.contains(<span class="string">&quot;李&quot;</span>))&#123;</span><br><span class="line">                list.remove(name);</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 倒着去删除也是可以的。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> list.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> list.get(i);</span><br><span class="line">            <span class="keyword">if</span>(name.contains(<span class="string">&quot;李&quot;</span>))&#123;</span><br><span class="line">                list.remove(name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 增强for循环遍历集合并删除数据，没有办法解决bug.</span></span><br><span class="line"><span class="comment">//        for (String name : list) &#123;</span></span><br><span class="line"><span class="comment">//            if(name.contains(&quot;李&quot;))&#123;</span></span><br><span class="line"><span class="comment">//                list.remove(name);</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        System.out.println(list);</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//lambda表达式也无法解决bug</span></span><br><span class="line"><span class="comment">//        list.forEach(name -&gt; &#123;</span></span><br><span class="line"><span class="comment">//            if(name.contains(&quot;李&quot;))&#123;</span></span><br><span class="line"><span class="comment">//                list.remove(name);</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line"><span class="comment">//        System.out.println(list);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/29/Collection-Set/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1013,73 +1084,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liautumn7.github.io/2024/03/12/BigDecimal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nianbao Li">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qdy">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/03/12/BigDecimal/" class="post-title-link" itemprop="url">BigDecimal</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-03-12 22:01:04" itemprop="dateCreated datePublished" datetime="2024-03-12T22:01:04+08:00">2024-03-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-29 21:26:03" itemprop="dateModified" datetime="2024-03-29T21:26:03+08:00">2024-03-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> <img src="/images/bigdecimal.png"> </p>
-<p><strong>BigDecimal：</strong>用来解决某些情况下浮点数运算失真的情况，在计算机底层是以二进制的方式来存储数据，所以在运算时某些情况下会失真。BigDecimal把数据转换成字符串形式拆分成一个一个字符，对应每一位相加减，从而解决失真问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">0.1</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">0.2</span>;</span><br><span class="line">        System.out.println(a + b);<span class="comment">//输出为0.30000000000000004</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//BigDecimal a1 = new BigDecimal(double);这种方法已经过时了，仍然存在精度损失风险，但是里面可以接String</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">a2</span> <span class="operator">=</span> <span class="string">&quot;0.2&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">b2</span> <span class="operator">=</span> <span class="string">&quot;0.1&quot;</span>;</span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">_a2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(a2);</span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">_b2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(b2);</span><br><span class="line">        System.out.println(_a2.add(_b2));<span class="comment">//输出0.3</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">a1</span> <span class="operator">=</span> BigDecimal.valueOf(a);<span class="comment">//调用valueOf方法</span></span><br><span class="line">        <span class="comment">//valueOf的源码就是调用了Double的toString方法</span></span><br><span class="line"><span class="comment">/*public static BigDecimal valueOf(double val) &#123;</span></span><br><span class="line"><span class="comment">        return new BigDecimal(Double.toString(val));</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">b1</span> <span class="operator">=</span> BigDecimal.valueOf(b);</span><br><span class="line">        System.out.println(a1.add(b1));<span class="comment">//输出为0.3,加法</span></span><br><span class="line">        System.out.println(a1.subtract(b1));<span class="comment">//减法</span></span><br><span class="line">        System.out.println(a1.multiply(b1));<span class="comment">//乘法</span></span><br><span class="line">        System.out.println(a1.divide(b1));<span class="comment">//除法,无限小数时要输入精度和舍入模式</span></span><br><span class="line">        </span><br><span class="line">        <span class="type">double</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">d</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">c1</span> <span class="operator">=</span> BigDecimal.valueOf(c);</span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">d1</span> <span class="operator">=</span> BigDecimal.valueOf(d);</span><br><span class="line">        <span class="comment">//System.out.println(c1.divide(d1)); 1/3会报错</span></span><br><span class="line">        System.out.println(c1.divide(d1, <span class="number">2</span>, RoundingMode.HALF_UP));<span class="comment">//输出0.33</span></span><br><span class="line">                             <span class="comment">//除数    保留几位小数     舍入模式，HALF_UP为四舍五入</span></span><br><span class="line">        <span class="type">BigDecimal</span> <span class="variable">result</span> <span class="operator">=</span> c1.divide(d1, <span class="number">2</span>, RoundingMode.HALF_UP);</span><br><span class="line">        <span class="type">double</span> <span class="variable">doubleResult</span> <span class="operator">=</span> result.doubleValue();<span class="comment">//将结果从BigDecimal类型转换成double</span></span><br><span class="line">        System.out.println(doubleResult);<span class="comment">//结果仍是0.33</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1149,7 +1153,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
