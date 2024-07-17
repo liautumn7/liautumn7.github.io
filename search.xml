@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>完结</title>
+      <link href="/2024/07/17/Java%E5%9F%BA%E7%A1%80%E5%AE%8C%E7%BB%93/"/>
+      <url>/2024/07/17/Java%E5%9F%BA%E7%A1%80%E5%AE%8C%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<p> .</p><p>经过小半年也是勉强把基础看完，长达80小时，后面的多线程、网络编程、反射、代理也懒得更新了，直接看讲义得了。</p><p><img src="/images/wanjie2.png"></p><p><img src="/images/wanjie1.png"></p><p>下一步要开始看javaweb了，又是200个视频，不过总计只有40小时，不知道暑假能不能看完。</p><p><img src="/images/web1.png"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> end </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>多线程的创建</title>
       <link href="/2024/04/19/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA/"/>
       <url>/2024/04/19/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA/</url>
